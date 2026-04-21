@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 32" width="110" height="32">
+  <defs>
+    <linearGradient id="tb-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#07B96A"/>
+      <stop offset="100%" style="stop-color:#A3DCAD"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="6" width="20" height="20" fill="url(#tb-grad)"/>
+  <text x="7" y="21" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">TB</text>
+  <text x="28" y="21" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#fff">The Block</text>
+</svg>

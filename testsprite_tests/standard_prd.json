@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "project": "CountWize Website Revamp",
+    "date": "2026-01-15",
+    "prepared_by": "Software Development Manager"
+  },
+  "product_overview": "CountWize is a crypto recovery and education website offering embedded Vimeo videos, curated news feeds, educational content, and a consistent user experience across all pages. The revamp focuses on improving video integration, content integrity, brand consistency, and UI polish to ensure a seamless, trustworthy platform for users.",
+  "core_goals": [
+    "Replace broken video embeds with direct Vimeo player for reliable playback.",
+    "Ensure all educational video content and hero videos function correctly without misleading links.",
+    "Replace placeholder and duplicated news articles with curated, static crypto news content.",
+    "Fix all broken or missing images, icons, and remove misplaced image content in text for content integrity.",
+    "Enforce strict brand consistency by correcting all variations of \"CountWize\" across the site.",
+    "Refine layout and styling for better readability, visual hierarchy, and responsive design across multiple sections.",
+    "Verify and fix platform links to ensure valid external references.",
+    "Design improvements for book covers to visually distinct and align with their topics."
+  ],
+  "key_features": [
+    "Direct Vimeo video embeds replacement for About and Education pages, plus hero video lightbox on homepage.",
+    "Fully functional hero \"Watch video\" button linking to actual Vimeo videos or removed when unavailable.",
+    "Interactive lessons video cards enabling video playback on click across Home and Education pages.",
+    "Curated static Social News Feed sourcing crypto news from reputed outlets with source logos, dates, and titles.",
+    "Handpicked educational news section linking to crypto recovery/security content with images.",
+    "Trending News section featuring unique, large news cards and list items without duplication.",
+    "Multiple UI and UX improvements including brand name consistency, corrected punctuation, distinctive icons for mission and recovery reasons.",
+    "Enhanced footer, core values layout, blog grid centering, and hero call-to-action vertical stacking.",
+    "Updated platform links with valid URLs or removal where inappropriate.",
+    "Redesigned book covers with thematic imagery representing legal, wallet recovery, forensics, scams, and case studies."
+  ],
+  "user_flow_summary": [
+    "User visits homepage and watches hero video in a lightbox powered by direct Vimeo embed.",
+    "User clicks \u001clesson\u001d cards on Home or Education pages to immediately play educational videos.",
+    "User explores curated social and trending news feeds with clear source attribution and clickable links opening in new tabs.",
+    "User navigates About page to view reliable embedded videos, mission and vision with distinct icons, and team members.",
+    "User reads educational content on crypto recovery guiding visuals without broken images or misplaced content.",
+    "User interacts with clear CTA buttons that are harmonized with video availability and content context.",
+    "User experiences consistent branding of 'CountWize' site-wide with improved readability and UI layouts.",
+    "User accesses platform links trusting they lead to genuine CountWize resources or are gracefully omitted.",
+    "User browses blog content with centered grid layout and correct branding throughout."
+  ],
+  "validation_criteria": [
+    "All Vimeo embedded videos load and play without errors on About, Education, and Home pages.",
+    "Hero \u001cWatch video\u001d button either plays actual video or is removed; lesson video cards function on click.",
+    "No \"content blocked\" or \"Cannot load link\" messages anywhere on the site.",
+    "No duplicate or placeholder news articles; all external news links open correctly in new tabs.",
+    "All broken/missing images and icons replaced with correct assets; no stray images or alt text embedded within text paragraphs.",
+    "All instances of \"Count Wise\" or \"Count Wize\" replaced with \"CountWize\" across the codebase.",
+    "No usage of em-dashes or spaced hyphens as punctuation; all replaced with periods or commas as appropriate.",
+    "Core values section heading stacked vertically above description; footer contact grouped logically; hero content CTAs stacked vertically.",
+    "Blog grid centers odd-numbered last article with correct CSS.",
+    "All platform logos link to valid CountWize URLs or are removed if invalid.",
+    "All book covers show updated, distinct designs matching each book's theme."
+  ],
+  "code_summary": {
+    "tech_stack": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Webflow",
+      "Vimeo API"
+    ],
+    "features": [
+      {
+        "name": "Video Embed Integration",
+        "description": "Direct Vimeo video embeds replacing Embedly wrappers for video playback on About and Education pages",
+        "files": [
+          "about-us.html",
+          "crypto-education.html",
+          "index.html"
+        ]
+      },
+      {
+        "name": "Hero Video Lightbox",
+        "description": "Webflow lightbox with direct Vimeo embed for hero section video playback",
+        "files": [
+          "index.html"
+        ]
+      },
+      {
+        "name": "Social News Feed",
+        "description": "Curated static news cards displaying crypto news from CoinDesk, Decrypt, CoinTelegraph, and The Block with source logos, dates, and article titles",
+        "files": [
+          "index.html",
+          "news.html"
+        ]
+      },
+      {
+        "name": "Handpicked News Section",
+        "description": "Featured news articles with images and links to crypto recovery and security educational content",
+        "files": [
+          "index.html",
+          "news.html"
+        ]
+      },
+      {
+        "name": "Trending News Section",
+        "description": "Large featured news cards and list items displaying trending crypto industry news",
+        "files": [
+          "news.html"
+        ]
+      }
+    ]
+  }
+}

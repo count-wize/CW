@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#090910"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#07B96A"/>
+      <stop offset="100%" style="stop-color:#A3DCAD"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" fill="url(#bg3)"/>
+  <rect x="140" y="70" width="40" height="40" rx="4" fill="none" stroke="url(#accent3)" stroke-width="2"/>
+  <rect x="180" y="70" width="40" height="40" rx="4" fill="none" stroke="url(#accent3)" stroke-width="2"/>
+  <rect x="220" y="70" width="40" height="40" rx="4" fill="none" stroke="url(#accent3)" stroke-width="2"/>
+  <line x1="160" y1="110" x2="160" y2="130" stroke="url(#accent3)" stroke-width="2"/>
+  <line x1="200" y1="110" x2="200" y2="130" stroke="url(#accent3)" stroke-width="2"/>
+  <line x1="240" y1="110" x2="240" y2="130" stroke="url(#accent3)" stroke-width="2"/>
+  <line x1="160" y1="130" x2="240" y2="130" stroke="url(#accent3)" stroke-width="2"/>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">Blockchain Forensics</text>
+  <text x="200" y="205" font-family="Arial, sans-serif" font-size="12" fill="#A3DCAD" text-anchor="middle">Tracing Digital Assets</text>
+</svg>

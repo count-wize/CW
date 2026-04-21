@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#090910"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#07B96A"/>
+      <stop offset="100%" style="stop-color:#A3DCAD"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" fill="url(#bg1)"/>
+  <circle cx="200" cy="100" r="50" fill="none" stroke="url(#accent1)" stroke-width="3"/>
+  <path d="M200 65 L200 95 M185 80 L200 95 L215 80" stroke="url(#accent1)" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="200" cy="100" r="35" fill="none" stroke="url(#accent1)" stroke-width="2" stroke-dasharray="8 4"/>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">Crypto Recovery</text>
+  <text x="200" y="205" font-family="Arial, sans-serif" font-size="12" fill="#A3DCAD" text-anchor="middle">Expert Solutions</text>
+</svg>

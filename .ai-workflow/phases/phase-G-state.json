@@ -1,0 +1,11 @@
+{
+  "phase_id": "G",
+  "status": "pending",
+  "tasks_total": 6,
+  "tasks_completed": 0,
+  "tokens_estimate": 75,
+  "started_at": null,
+  "completed_at": null,
+  "modified_files": [],
+  "errors": []
+}

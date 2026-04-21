@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:8000",
+  "executionArgs": {
+    "projectName": "CountWize  - Website",
+    "projectPath": "/Users/hamzeh/Desktop/GitHub/CountWize  - Website",
+    "testIds": [],
+    "additionalInstruction": "Focus on testing the changes made in Phases 1-4:\n\nPhase 1 - Critical Infrastructure:\n- Verify NO Embedly iframes exist (should use direct Vimeo embeds)\n- Verify video player elements exist on index.html, about-us.html, crypto-education.html\n- Verify news sections have real content (no \"Text Link\" or \"Binance Twitter\" placeholders)\n- Verify all external links have target=\"_blank\" and rel=\"noopener\"\n\nPhase 2 - Content Integrity:\n- Verify Mission and Vision sections have distinct SVG icons\n- Verify EBooks \"Browse EBooks\" button links to #ebooks-collection\n- Verify platform links have real URLs\n\nPhase 3 - Brand Consistency:\n- Verify NO instances of \"Count Wise\" or \"Count Wize\" (should be \"CountWize\")\n- Verify NO em-dashes in headlines\n\nPhase 4 - Layout Polish:\n- Verify .core-values-heading-wrapper uses flex-direction: column\n- Verify .blog-insights-wrapper uses flexbox with justify-content: center\n- Verify hero button is not absolutely positioned off-screen",
+    "envs": {
+      "API_KEY": "sk-user-uMMcLNdCcZvvIeg4YwSm1G_sLxtGbpZyJGQFsbnck-Y3MKcQW5eMXSqb5RzbNVeAwAAbx59ZMgO2MAKBcRs8JEkLh1Hl3y2kwn6uKX7bshzhsHFPFir98XjzxfGkctZjYno"
+    }
+  },
+  "proxy": "http://9ed1f9f9-4aa4-48fc-8f38-8b641c79ab8a:09uKar469md9VqWn8LOcvp3tyiAaBiXy@tun.testsprite.com:8080"
+}

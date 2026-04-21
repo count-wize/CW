@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" width="120" height="32">
+  <defs>
+    <linearGradient id="cd-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#07B96A"/>
+      <stop offset="100%" style="stop-color:#A3DCAD"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="6" width="20" height="20" rx="4" fill="url(#cd-grad)"/>
+  <text x="8" y="21" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">C</text>
+  <text x="26" y="22" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#fff">CoinDesk</text>
+</svg>

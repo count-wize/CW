@@ -1,0 +1,80 @@
+{
+  "tech_stack": ["HTML5", "CSS3", "JavaScript", "Webflow", "Vimeo API", "Google Analytics"],
+  "features": [
+    {
+      "name": "Video Embed Integration",
+      "description": "Direct Vimeo video embeds replacing Embedly wrappers for video playback on About, Education, and Home pages. Videos use brand color #07B96A.",
+      "files": ["about-us.html", "crypto-education.html", "index.html"]
+    },
+    {
+      "name": "Hero Video Lightbox",
+      "description": "Webflow lightbox with direct Vimeo embed for hero section video playback on homepage",
+      "files": ["index.html"]
+    },
+    {
+      "name": "Social News Feed",
+      "description": "Curated static news cards displaying crypto news from CoinDesk, Decrypt, CoinTelegraph, and The Block with source logos, dates, and article titles",
+      "files": ["index.html", "news.html"]
+    },
+    {
+      "name": "Handpicked News Section",
+      "description": "Featured news articles with images and links to crypto recovery and security educational content",
+      "files": ["index.html", "news.html"]
+    },
+    {
+      "name": "Trending News Section",
+      "description": "Large featured news cards and list items displaying trending crypto industry news",
+      "files": ["news.html"]
+    },
+    {
+      "name": "EBooks Section",
+      "description": "EBooks collection with Browse EBooks button that scrolls to book grid, download links to Google Drive PDFs",
+      "files": ["crypto-education.html"]
+    },
+    {
+      "name": "Mission Vision Section",
+      "description": "About page section with distinct inline SVG icons for Mission (target) and Vision (eye) using brand color",
+      "files": ["about-us.html"]
+    },
+    {
+      "name": "Core Values Section",
+      "description": "About page section with heading above description, centered layout using CSS flexbox",
+      "files": ["about-us.html", "css/main.css"]
+    },
+    {
+      "name": "Team Section",
+      "description": "About page team display with 3 team members including photos and descriptions",
+      "files": ["about-us.html", "team.html"]
+    },
+    {
+      "name": "Supported Platforms",
+      "description": "Platform logos with external links to Binance, Medium, CoinPress, Barchart, and Digital Journal featuring CountWize",
+      "files": ["index.html"]
+    },
+    {
+      "name": "FAQ Sections",
+      "description": "Frequently asked questions about CountWize services across multiple pages with consistent branding",
+      "files": ["blog.html", "faq-crypto-recovery.html", "recovery.html", "team.html", "crypto-tax.html", "crypto-recovery.html", "crypto-recovery-guide.html"]
+    },
+    {
+      "name": "Blog Grid Layout",
+      "description": "Blog articles displayed in centered flexbox grid with odd articles centered",
+      "files": ["blog.html", "css/main.css"]
+    },
+    {
+      "name": "Footer Contact Section",
+      "description": "Footer with phone, email, location, and social icons in responsive grid layout",
+      "files": ["index.html", "css/main.css"]
+    },
+    {
+      "name": "Hero Section",
+      "description": "Homepage hero with headline, subtext, CTA button, and contact form. CTA properly stacked in vertical flow.",
+      "files": ["index.html", "css/main.css"]
+    },
+    {
+      "name": "Lesson Video Cards",
+      "description": "8 lesson cards with data-video-url attributes and JavaScript video player switching functionality",
+      "files": ["index.html"]
+    }
+  ]
+}

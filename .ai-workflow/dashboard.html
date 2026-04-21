@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workflow Dashboard v4.1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --bg-elevated: #22222f;
+            --bg-hover: #2a2a3a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --border-primary: #2a2a3a;
+            --border-secondary: #3a3a4a;
+            --accent-blue: #3b82f6;
+            --accent-blue-hover: #2563eb;
+            --accent-green: #22c55e;
+            --accent-green-hover: #16a34a;
+            --accent-yellow: #eab308;
+            --accent-yellow-hover: #ca8a04;
+            --accent-red: #ef4444;
+            --accent-red-hover: #dc2626;
+            --accent-purple: #a855f7;
+            --accent-orange: #f97316;
+            --accent-cyan: #06b6d4;
+            --status-pending: #64748b;
+            --status-running: #3b82f6;
+            --status-completed: #22c55e;
+            --status-error: #ef4444;
+            --status-skipped: #94a3b8;
+            --status-testing: #a855f7;
+            --status-waiting: #f97316;
+            --shadow-glow-blue: 0 0 20px rgba(59, 130, 246, 0.3);
+            --shadow-glow-green: 0 0 20px rgba(34, 197, 94, 0.3);
+            --shadow-glow-red: 0 0 20px rgba(239, 68, 68, 0.3);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', monospace;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; line-height: 1.5; }
+        .app { display: flex; flex-direction: column; min-height: 100vh; }
+
+        .header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 24px; background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-primary);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .header-left { display: flex; align-items: center; gap: 16px; }
+        .logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.25rem; }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        .version-badge { background: var(--accent-blue); color: white; padding: 2px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; }
+        .connection-status { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-secondary); }
+        .connection-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); animation: pulse-glow 2s infinite; }
+        .connection-dot.disconnected { background: var(--accent-red); box-shadow: 0 0 8px var(--accent-red); }
+        @keyframes pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+        .main { flex: 1; display: grid; grid-template-columns: 1fr 340px; gap: 24px; padding: 24px; max-width: 1800px; margin: 0 auto; width: 100%; }
+        .content { display: flex; flex-direction: column; gap: 24px; }
+        .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+        .card { background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); overflow: hidden; }
+        .card-header { display: flex; align-items: center; justify-content: space-between; padding: 16px; border-bottom: 1px solid var(--border-primary); background: var(--bg-tertiary); }
+        .card-title { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); }
+        .card-badge { background: var(--bg-elevated); padding: 2px 10px; border-radius: var(--radius-full); font-size: 0.75rem; color: var(--text-secondary); }
+        .card-body { padding: 16px; }
+
+        .control-panel { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: var(--radius-lg); }
+        .control-group { display: flex; gap: 8px; }
+        .control-divider { width: 1px; background: var(--border-primary); margin: 0 8px; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 16px; border: none; border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 150ms ease; white-space: nowrap; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-primary { background: var(--accent-blue); color: white; }
+        .btn-primary:hover:not(:disabled) { background: var(--accent-blue-hover); transform: translateY(-1px); }
+        .btn-success { background: var(--accent-green); color: white; }
+        .btn-success:hover:not(:disabled) { background: var(--accent-green-hover); transform: translateY(-1px); }
+        .btn-warning { background: var(--accent-yellow); color: black; }
+        .btn-warning:hover:not(:disabled) { background: var(--accent-yellow-hover); transform: translateY(-1px); }
+        .btn-danger { background: var(--accent-red); color: white; }
+        .btn-danger:hover:not(:disabled) { background: var(--accent-red-hover); transform: translateY(-1px); }
+        .btn-secondary { background: var(--bg-elevated); color: var(--text-primary); border: 1px solid var(--border-secondary); }
+        .btn-secondary:hover:not(:disabled) { background: var(--bg-hover); }
+        .btn-ghost { background: transparent; color: var(--text-secondary); }
+        .btn-ghost:hover:not(:disabled) { background: var(--bg-hover); color: var(--text-primary); }
+        .btn-sm { padding: 4px 10px; font-size: 0.75rem; }
+
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .stat-card { background: var(--bg-tertiary); border-radius: var(--radius-md); padding: 16px; text-align: center; transition: transform 150ms ease; }
+        .stat-card:hover { transform: translateY(-2px); }
+        .stat-value { font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+        .status-display { display: flex; flex-direction: column; align-items: center; padding: 32px; text-align: center; }
+        .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: var(--radius-full); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+        .status-badge.idle { background: var(--status-pending); color: white; }
+        .status-badge.ready { background: var(--accent-cyan); color: white; }
+        .status-badge.running { background: var(--status-running); color: white; animation: pulse-bg 2s infinite; }
+        .status-badge.waiting_for_claude { background: var(--status-waiting); color: white; animation: pulse-bg 2s infinite; }
+        .status-badge.paused { background: var(--accent-yellow); color: black; }
+        .status-badge.completed { background: var(--status-completed); color: white; }
+        .status-badge.error { background: var(--status-error); color: white; }
+        .status-badge.testing { background: var(--status-testing); color: white; animation: pulse-bg 2s infinite; }
+        @keyframes pulse-bg { 0%, 100% { opacity: 1; } 50% { opacity: 0.75; } }
+        .status-message { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 16px; }
+        .progress-bar { width: 100%; max-width: 400px; height: 8px; background: var(--bg-elevated); border-radius: var(--radius-full); overflow: hidden; margin-top: 16px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)); border-radius: var(--radius-full); transition: width 400ms ease; }
+        .progress-text { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
+
+        .phases-list { display: flex; flex-direction: column; gap: 8px; }
+        .phase-item { display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px solid var(--border-primary); transition: all 150ms ease; }
+        .phase-item:hover { background: var(--bg-hover); border-color: var(--border-secondary); }
+        .phase-item.active { border-color: var(--accent-blue); box-shadow: var(--shadow-glow-blue); }
+        .phase-item.completed { border-color: var(--accent-green); }
+        .phase-item.error { border-color: var(--accent-red); }
+        .phase-indicator { width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.125rem; flex-shrink: 0; }
+        .phase-indicator.pending { background: var(--status-pending); color: white; }
+        .phase-indicator.running, .phase-indicator.waiting { background: var(--status-running); color: white; animation: pulse-bg 2s infinite; }
+        .phase-indicator.testing { background: var(--status-testing); color: white; animation: pulse-bg 2s infinite; }
+        .phase-indicator.completed { background: var(--status-completed); color: white; }
+        .phase-indicator.skipped { background: var(--status-skipped); color: white; }
+        .phase-indicator.error { background: var(--status-error); color: white; }
+        .phase-info { flex: 1; min-width: 0; }
+        .phase-name { font-weight: 600; margin-bottom: 2px; }
+        .phase-meta { font-size: 0.75rem; color: var(--text-muted); }
+        .phase-actions { display: flex; gap: 6px; }
+        .phase-status-badge { padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+        .phase-status-badge.running, .phase-status-badge.waiting { background: var(--status-running); color: white; }
+        .phase-status-badge.testing { background: var(--status-testing); color: white; }
+        .phase-status-badge.completed { background: var(--status-completed); color: white; }
+        .phase-status-badge.error { background: var(--status-error); color: white; }
+        .phase-status-badge.skipped { background: var(--status-skipped); color: white; }
+
+        .logs-container { height: 300px; overflow-y: auto; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.6; padding: 8px; background: var(--bg-primary); border-radius: var(--radius-sm); }
+        .log-entry { padding: 2px 0; display: flex; gap: 8px; }
+        .log-time { color: var(--text-muted); flex-shrink: 0; }
+        .log-level { flex-shrink: 0; font-weight: 600; width: 50px; }
+        .log-level.INFO { color: var(--accent-green); }
+        .log-level.WARN { color: var(--accent-yellow); }
+        .log-level.ERROR { color: var(--accent-red); }
+        .log-level.DEBUG { color: var(--accent-blue); }
+        .log-message { color: var(--text-secondary); word-break: break-word; }
+
+        .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px; text-align: center; color: var(--text-muted); }
+        .empty-state-icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.5; }
+        .empty-state-title { font-size: 1.125rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+
+        .errors-empty { display: flex; flex-direction: column; align-items: center; padding: 32px; color: var(--text-muted); }
+        .error-item { padding: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-sm); margin-bottom: 8px; }
+        .error-phase { font-weight: 600; color: var(--accent-red); font-size: 0.75rem; margin-bottom: 2px; }
+        .error-message { font-size: 0.875rem; color: var(--text-secondary); }
+
+        .test-results { display: flex; flex-direction: column; gap: 8px; }
+        .test-item { display: flex; align-items: center; gap: 8px; padding: 8px; background: var(--bg-tertiary); border-radius: var(--radius-sm); }
+        .test-icon { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+        .test-icon.passed { background: var(--status-completed); color: white; }
+        .test-icon.failed { background: var(--status-error); color: white; }
+        .test-icon.skipped { background: var(--status-skipped); color: white; }
+        .test-name { flex: 1; font-size: 0.875rem; }
+        .test-status { font-size: 0.75rem; color: var(--text-muted); }
+
+        .files-list { max-height: 200px; overflow-y: auto; }
+        .file-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 0.875rem; font-family: var(--font-mono); color: var(--text-secondary); }
+        .file-icon { color: var(--accent-blue); }
+
+        .spinner { width: 16px; height: 16px; border: 2px solid transparent; border-top-color: currentColor; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-in { animation: fadeIn 0.3s ease-out; }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-secondary); border-radius: var(--radius-full); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        @media (max-width: 1200px) { .main { grid-template-columns: 1fr; } .sidebar { display: grid; grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .stats-row { grid-template-columns: repeat(2, 1fr); } .sidebar { grid-template-columns: 1fr; } .control-panel { flex-direction: column; } .control-divider { width: 100%; height: 1px; margin: 8px 0; } }
+    </style>
+</head>
+<body>
+    <div class="app" id="app">
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-icon">🤖</div>
+                    <span>AI Workflow</span>
+                    <span class="version-badge">v4.1</span>
+                </div>
+            </div>
+            <div class="connection-status">
+                <div class="connection-dot" id="connectionDot"></div>
+                <span id="connectionText">Connected</span>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="content">
+                <div class="control-panel">
+                    <div class="control-group">
+                        <button class="btn btn-primary" id="btnAnalyze" onclick="analyze()">📊 Analyze Plan</button>
+                        <button class="btn btn-success" id="btnStart" onclick="start()" disabled>▶️ Start</button>
+                        <button class="btn btn-warning" id="btnPause" onclick="pause()" disabled>⏸️ Pause</button>
+                    </div>
+                    <div class="control-divider"></div>
+                    <div class="control-group">
+                        <button class="btn btn-secondary" onclick="window.open('http://localhost:8000', '_blank')">👁️ Preview</button>
+                        <button class="btn btn-secondary" onclick="fetchState()">🔄 Refresh</button>
+                    </div>
+                    <div class="control-divider"></div>
+                    <div class="control-group">
+                        <button class="btn btn-danger" onclick="reset()">🗑️ Reset</button>
+                    </div>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-card"><div class="stat-value" id="statPhases">0</div><div class="stat-label">Phases</div></div>
+                    <div class="stat-card"><div class="stat-value" id="statTasks">0</div><div class="stat-label">Tasks</div></div>
+                    <div class="stat-card"><div class="stat-value" id="statCompleted">0</div><div class="stat-label">Completed</div></div>
+                    <div class="stat-card"><div class="stat-value" id="statErrors">0</div><div class="stat-label">Errors</div></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span>📊</span><span>Status</span></div>
+                        <div class="card-badge" id="timerBadge">0:00</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="status-display">
+                            <div class="status-badge idle" id="statusBadge">IDLE</div>
+                            <div class="status-message" id="statusMessage">Ready to analyze planning.md</div>
+                            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+                            <div class="progress-text" id="progressText">Phase 0 of 0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span>🎯</span><span>Phases</span></div>
+                        <div class="card-badge" id="phaseCount">0 phases</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="phases-list" id="phasesList">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">📋</div>
+                                <div class="empty-state-title">No phases yet</div>
+                                <div>Click "Analyze Plan" to parse planning.md and create phases</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span>📜</span><span>Logs</span></div>
+                        <button class="btn btn-ghost btn-sm" onclick="clearLogs()">Clear</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="logs-container" id="logsContainer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span>⚠️</span><span>Errors</span></div>
+                        <div class="card-badge" id="errorCount">0</div>
+                    </div>
+                    <div class="card-body">
+                        <div id="errorsList">
+                            <div class="errors-empty"><div style="font-size: 2rem; margin-bottom: 8px;">✅</div><div>No errors</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span>🧪</span><span>Test Results</span></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="test-results" id="testResults">
+                            <div class="empty-state" style="padding: 24px;">
+                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🧪</div>
+                                <div style="font-size: 0.75rem;">Tests run after phases complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><span>📝</span><span>Modified Files</span></div>
+                        <div class="card-badge" id="filesCount">0</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="files-list" id="filesList">
+                            <div class="empty-state" style="padding: 24px;">
+                                <div style="font-size: 0.75rem; color: var(--text-muted);">No files modified yet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const state = { session: null, config: null, logs: [], timer: 0, timerInterval: null, pollInterval: null, lastStateHash: null };
+
+        async function fetchState() {
+            try {
+                const response = await fetch('/api/state');
+                if (!response.ok) throw new Error('Network error');
+                const data = await response.json();
+                const newHash = JSON.stringify(data.session);
+                if (newHash !== state.lastStateHash) {
+                    state.session = data.session;
+                    state.config = data.config;
+                    state.lastStateHash = newHash;
+                    updateUI();
+                }
+                updateConnectionStatus(true);
+                return true;
+            } catch (e) {
+                console.error('Fetch failed:', e);
+                updateConnectionStatus(false);
+                return false;
+            }
+        }
+
+        async function analyze() {
+            setButtonLoading('btnAnalyze', true);
+            addLog('INFO', 'Analyzing planning.md...');
+            try {
+                const response = await fetch('/api/analyze', { method: 'POST' });
+                const data = await response.json();
+                if (data.success) {
+                    addLog('INFO', `✅ Found ${data.tasks} tasks in ${data.phases} phases`);
+                    await fetchState();
+                } else {
+                    addLog('ERROR', `Analysis failed: ${data.error}`);
+                }
+            } catch (e) {
+                addLog('ERROR', `Analysis failed: ${e.message}`);
+            }
+            setButtonLoading('btnAnalyze', false);
+        }
+
+        async function start() {
+            setButtonLoading('btnStart', true);
+            addLog('INFO', 'Starting workflow...');
+            startTimer();
+            try {
+                const response = await fetch('/api/start', { method: 'POST' });
+                const data = await response.json();
+                if (data.success) {
+                    addLog('INFO', `✅ Workflow started - Phase ${data.phase || 'A'}`);
+                    await fetchState();
+                } else {
+                    addLog('ERROR', `Start failed: ${data.error}`);
+                    stopTimer();
+                }
+            } catch (e) {
+                addLog('ERROR', `Start failed: ${e.message}`);
+                stopTimer();
+            }
+            setButtonLoading('btnStart', false);
+        }
+
+        async function pause() {
+            try {
+                const response = await fetch('/api/pause', { method: 'POST' });
+                const data = await response.json();
+                if (data.success) {
+                    addLog('INFO', 'Workflow paused');
+                    stopTimer();
+                    await fetchState();
+                }
+            } catch (e) {
+                addLog('ERROR', `Pause failed: ${e.message}`);
+            }
+        }
+
+        async function reset() {
+            if (!confirm('Reset workflow? This will clear all progress.')) return;
+            try {
+                const response = await fetch('/api/reset', { method: 'POST' });
+                const data = await response.json();
+                if (data.success) {
+                    addLog('INFO', 'Workflow reset');
+                    stopTimer();
+                    state.timer = 0;
+                    updateTimerDisplay();
+                    await fetchState();
+                }
+            } catch (e) {
+                addLog('ERROR', `Reset failed: ${e.message}`);
+            }
+        }
+
+        async function startPhase(phaseId) {
+            addLog('INFO', `Starting Phase ${phaseId}...`);
+            startTimer();
+            try {
+                const response = await fetch('/api/start-phase', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phase_id: phaseId })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    addLog('INFO', `✅ Phase ${phaseId} started`);
+                    await fetchState();
+                } else {
+                    addLog('ERROR', `Start phase failed: ${data.error}`);
+                }
+            } catch (e) {
+                addLog('ERROR', `Start phase failed: ${e.message}`);
+            }
+        }
+
+        async function skipPhase(phaseId) {
+            try {
+                const response = await fetch('/api/skip', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phase_id: phaseId })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    addLog('INFO', `Skipped Phase ${phaseId}`);
+                    await fetchState();
+                }
+            } catch (e) {
+                addLog('ERROR', `Skip failed: ${e.message}`);
+            }
+        }
+
+        async function retryPhase(phaseId) {
+            addLog('INFO', `Retrying Phase ${phaseId}...`);
+            try {
+                const response = await fetch('/api/retry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phase_id: phaseId })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    addLog('INFO', `✅ Phase ${phaseId} retry started`);
+                    startTimer();
+                    await fetchState();
+                } else {
+                    addLog('ERROR', `Retry failed: ${data.error}`);
+                }
+            } catch (e) {
+                addLog('ERROR', `Retry failed: ${e.message}`);
+            }
+        }
+
+        function updateUI() {
+            if (!state.session) return;
+            const s = state.session;
+            document.getElementById('statPhases').textContent = s.phases?.length || 0;
+            document.getElementById('statTasks').textContent = s.total_tasks || 0;
+            document.getElementById('statCompleted').textContent = s.completed_tasks || 0;
+            document.getElementById('statErrors').textContent = s.errors?.length || 0;
+            updateStatusBadge(s.state);
+            updateButtons(s.state, s.phases);
+            updatePhasesList(s.phases || []);
+            const total = s.phases?.length || 0;
+            const completed = s.phases?.filter(p => p.state === 'completed' || p.state === 'skipped').length || 0;
+            const progress = total > 0 ? (completed / total) * 100 : 0;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `Phase ${completed} of ${total}`;
+            document.getElementById('phaseCount').textContent = `${total} phases`;
+            updateErrorsList(s.errors || []);
+            const allFiles = s.phases?.flatMap(p => p.files_modified || []) || [];
+            updateFilesList(allFiles);
+            updateTestResults(s.phases || []);
+            if (['running', 'waiting_for_claude', 'testing'].includes(s.state)) {
+                if (!state.timerInterval) startTimer();
+            }
+        }
+
+        function updateStatusBadge(status) {
+            const badge = document.getElementById('statusBadge');
+            const msg = document.getElementById('statusMessage');
+            badge.className = `status-badge ${status}`;
+            badge.textContent = status.toUpperCase().replace(/_/g, ' ');
+            const messages = {
+                'idle': 'Ready to analyze planning.md',
+                'analyzing': 'Analyzing planning.md...',
+                'ready': 'Ready to start workflow',
+                'running': 'Executing phases...',
+                'paused': 'Workflow paused',
+                'waiting_for_claude': '⏳ Waiting for Claude Code to complete...',
+                'testing': 'Running tests...',
+                'completed': '🎉 All phases completed successfully!',
+                'error': 'An error occurred - check errors panel'
+            };
+            msg.textContent = messages[status] || status;
+        }
+
+        function updateButtons(status, phases) {
+            const hasPhases = phases && phases.length > 0;
+            document.getElementById('btnAnalyze').disabled = !['idle', 'ready', 'completed', 'error'].includes(status);
+            const btnStart = document.getElementById('btnStart');
+            btnStart.disabled = !(['ready', 'paused', 'error'].includes(status) && hasPhases);
+            btnStart.innerHTML = status === 'paused' ? '▶️ Resume' : '▶️ Start';
+            document.getElementById('btnPause').disabled = !['running', 'waiting_for_claude', 'testing'].includes(status);
+        }
+
+        function updatePhasesList(phases) {
+            const container = document.getElementById('phasesList');
+            if (!phases.length) {
+                container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-title">No phases yet</div><div>Click "Analyze Plan" to parse planning.md and create phases</div></div>`;
+                return;
+            }
+            container.innerHTML = phases.map(p => {
+                const isActive = ['running', 'waiting', 'testing'].includes(p.state);
+                const itemClass = `phase-item ${isActive ? 'active' : ''} ${p.state === 'completed' ? 'completed' : ''} ${p.state === 'error' ? 'error' : ''} animate-in`;
+                let actions = '';
+                if (p.state === 'pending') {
+                    actions = `<button class="btn btn-success btn-sm" onclick="startPhase('${p.id}')">Start</button><button class="btn btn-ghost btn-sm" onclick="skipPhase('${p.id}')">Skip</button>`;
+                } else if (p.state === 'error') {
+                    actions = `<button class="btn btn-warning btn-sm" onclick="retryPhase('${p.id}')">Retry</button>`;
+                } else if (['running', 'waiting', 'testing', 'completed', 'skipped'].includes(p.state)) {
+                    actions = `<span class="phase-status-badge ${p.state}">${p.state}</span>`;
+                }
+                return `<div class="${itemClass}"><div class="phase-indicator ${p.state}">${p.id}</div><div class="phase-info"><div class="phase-name">${p.name}</div><div class="phase-meta">${p.task_count} tasks · ~${Math.round(p.token_estimate / 1000)}K tokens</div></div><div class="phase-actions">${actions}</div></div>`;
+            }).join('');
+        }
+
+        function updateErrorsList(errors) {
+            const container = document.getElementById('errorsList');
+            document.getElementById('errorCount').textContent = errors.length;
+            if (!errors.length) {
+                container.innerHTML = `<div class="errors-empty"><div style="font-size: 2rem; margin-bottom: 8px;">✅</div><div>No errors</div></div>`;
+                return;
+            }
+            container.innerHTML = errors.map(e => `<div class="error-item"><div class="error-phase">Phase ${e.phase}</div><div class="error-message">${e.error}</div></div>`).join('');
+        }
+
+        function updateFilesList(files) {
+            const container = document.getElementById('filesList');
+            document.getElementById('filesCount').textContent = files.length;
+            if (!files.length) {
+                container.innerHTML = `<div class="empty-state" style="padding: 24px;"><div style="font-size: 0.75rem; color: var(--text-muted);">No files modified yet</div></div>`;
+                return;
+            }
+            const uniqueFiles = [...new Set(files)].slice(-20);
+            container.innerHTML = uniqueFiles.map(f => `<div class="file-item"><span class="file-icon">📄</span><span>${f}</span></div>`).join('');
+        }
+
+        function updateTestResults(phases) {
+            const container = document.getElementById('testResults');
+            const completedPhases = phases.filter(p => p.test_results);
+            if (!completedPhases.length) {
+                container.innerHTML = `<div class="empty-state" style="padding: 24px;"><div style="font-size: 1.5rem; margin-bottom: 4px;">🧪</div><div style="font-size: 0.75rem;">Tests run after phases complete</div></div>`;
+                return;
+            }
+            const latest = completedPhases[completedPhases.length - 1].test_results;
+            if (!latest || !latest.tests) return;
+            container.innerHTML = latest.tests.map(t => {
+                const iconClass = t.status === 'passed' ? 'passed' : t.status === 'failed' ? 'failed' : 'skipped';
+                const icon = t.status === 'passed' ? '✓' : t.status === 'failed' ? '✗' : '○';
+                return `<div class="test-item"><div class="test-icon ${iconClass}">${icon}</div><div class="test-name">${t.name}</div><div class="test-status">${t.status}</div></div>`;
+            }).join('');
+        }
+
+        function updateConnectionStatus(connected) {
+            const dot = document.getElementById('connectionDot');
+            const text = document.getElementById('connectionText');
+            if (connected) {
+                dot.classList.remove('disconnected');
+                text.textContent = 'Connected';
+            } else {
+                dot.classList.add('disconnected');
+                text.textContent = 'Disconnected';
+            }
+        }
+
+        function addLog(level, message) {
+            const entry = { timestamp: new Date().toISOString(), level: level, message: message };
+            state.logs.push(entry);
+            if (state.logs.length > 500) state.logs.shift();
+            const container = document.getElementById('logsContainer');
+            const time = entry.timestamp.split('T')[1].split('.')[0];
+            const div = document.createElement('div');
+            div.className = 'log-entry';
+            div.innerHTML = `<span class="log-time">${time}</span><span class="log-level ${level}">${level}</span><span class="log-message">${message}</span>`;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+            while (container.children.length > 100) container.removeChild(container.firstChild);
+        }
+
+        function clearLogs() {
+            state.logs = [];
+            document.getElementById('logsContainer').innerHTML = '';
+            addLog('INFO', 'Logs cleared');
+        }
+
+        function startTimer() {
+            if (state.timerInterval) return;
+            state.timerInterval = setInterval(() => { state.timer++; updateTimerDisplay(); }, 1000);
+        }
+
+        function stopTimer() {
+            if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(state.timer / 60);
+            const secs = state.timer % 60;
+            document.getElementById('timerBadge').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function setButtonLoading(id, loading) {
+            const btn = document.getElementById(id);
+            if (loading) {
+                btn.disabled = true;
+                btn.dataset.originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="spinner"></span> Loading...';
+            } else {
+                btn.disabled = false;
+                if (btn.dataset.originalText) btn.innerHTML = btn.dataset.originalText;
+            }
+        }
+
+        async function init() {
+            addLog('INFO', 'Dashboard v4.1 loaded');
+            addLog('INFO', 'Using HTTP polling for reliable updates');
+            await fetchState();
+            state.pollInterval = setInterval(fetchState, 2000);
+        }
+
+        init();
+    </script>
+</body>
+</html>

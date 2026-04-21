@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#090910"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#07B96A"/>
+      <stop offset="100%" style="stop-color:#A3DCAD"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" fill="url(#bg2)"/>
+  <rect x="160" y="60" width="80" height="60" rx="8" fill="none" stroke="url(#accent2)" stroke-width="3"/>
+  <circle cx="200" cy="90" r="12" fill="none" stroke="url(#accent2)" stroke-width="2"/>
+  <rect x="195" y="95" width="10" height="15" fill="url(#accent2)"/>
+  <path d="M145 130 L255 130" stroke="url(#accent2)" stroke-width="2" stroke-dasharray="6 3"/>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">Crypto Security</text>
+  <text x="200" y="205" font-family="Arial, sans-serif" font-size="12" fill="#A3DCAD" text-anchor="middle">Protection Guide</text>
+</svg>

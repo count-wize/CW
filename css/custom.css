@@ -1,0 +1,107 @@
+/**
+ * CountWize Custom Styles
+ * This file contains consolidated custom styles that extend main.css.
+ * Print styles and additional utilities are defined here.
+ */
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  /* Hide non-essential elements */
+  .navbar,
+  .navbar-2,
+  .w-nav,
+  .footer,
+  .section-footer,
+  .section-footer-3,
+  .social-icons,
+  .navbar-cta-wrapper,
+  .navbar-contact-button,
+  .button,
+  .livechat-wrapper,
+  .circle-wrapper,
+  .circle-block,
+  .line-top-wrapper,
+  .popup-container,
+  .recovery-button {
+    display: none !important;
+  }
+
+  /* Ensure content is readable */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Remove backgrounds */
+  .section,
+  .section.gray,
+  .wrapper-page,
+  .page-wrapper {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure text is visible */
+  h1, h2, h3, h4, h5, h6,
+  p, span, div, a, li {
+    color: black !important;
+    text-shadow: none !important;
+  }
+
+  /* Show link URLs */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  /* Page breaks */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Ensure images print */
+  img {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* ==========================================================================
+   GPU ACCELERATION HINT
+   ========================================================================== */
+
+img {
+  will-change: transform;
+}
+
+/* ==========================================================================
+   ADDITIONAL TITLE LINK VARIANTS
+   ========================================================================== */
+
+.title-link-web-new,
+.title-link-new,
+.title-link-image-block,
+.title-link-list-news {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-link-image-block:hover {
+  text-decoration: underline;
+  color: #07b96a;
+}

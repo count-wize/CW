@@ -1,0 +1,152 @@
+[
+  {
+    "timestamp": "2026-01-21T03:20:14.657376",
+    "time": "03:20:14",
+    "message": "Local server started on port 8000",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:20:14.658828",
+    "time": "03:20:14",
+    "message": "File watcher started",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:20:14.664668",
+    "time": "03:20:14",
+    "message": "Dashboard: http://localhost:3000",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:20:14.664967",
+    "time": "03:20:14",
+    "message": "Existing planning.md found",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:21:22.929125",
+    "time": "03:21:22",
+    "message": "Local server started on port 8000",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:21:22.930364",
+    "time": "03:21:22",
+    "message": "File watcher started",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:21:22.938027",
+    "time": "03:21:22",
+    "message": "Dashboard: http://localhost:3000",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:21:22.938300",
+    "time": "03:21:22",
+    "message": "Existing planning.md found",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:24:59.053602",
+    "time": "03:24:59",
+    "message": "Resetting workflow...",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:24:59.057271",
+    "time": "03:24:59",
+    "message": "Workflow reset complete",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:25:02.377503",
+    "time": "03:25:02",
+    "message": "Found 48 tasks in planning.md",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:25:02.387700",
+    "time": "03:25:02",
+    "message": "Created 8 phases from 48 tasks",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:36:39.349136",
+    "time": "03:36:39",
+    "message": "Found 48 tasks in planning.md",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:36:39.356093",
+    "time": "03:36:39",
+    "message": "Created 8 phases from 48 tasks",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:36:44.248473",
+    "time": "03:36:44",
+    "message": "Workflow started",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:36:46.269767",
+    "time": "03:36:46",
+    "message": "Phase A started",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:36:46.276956",
+    "time": "03:36:46",
+    "message": "Command file written for Phase A",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:36:46.783416",
+    "time": "03:36:46",
+    "message": "Triggering Claude Code for Phase A...",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:36:46.966702",
+    "time": "03:36:46",
+    "message": "Sent trigger to Claude Code for Phase A",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:41:45.957851",
+    "time": "03:41:45",
+    "message": "Opened preview: http://localhost:8000/",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T03:50:20.967941",
+    "time": "03:50:20",
+    "message": "Opened preview: http://localhost:8000/",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T05:07:40.153940",
+    "time": "05:07:40",
+    "message": "Local server started on port 8000",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T05:07:40.155296",
+    "time": "05:07:40",
+    "message": "File watcher started",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T05:07:40.160596",
+    "time": "05:07:40",
+    "message": "Dashboard: http://localhost:3000",
+    "level": "INFO"
+  },
+  {
+    "timestamp": "2026-01-21T05:07:40.160836",
+    "time": "05:07:40",
+    "message": "Existing planning.md found",
+    "level": "INFO"
+  }
+]

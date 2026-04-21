@@ -1,0 +1,60 @@
+# ===================
+# OS Generated Files
+# ===================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===================
+# Editor & IDE
+# ===================
+*.swp
+*.swo
+*~
+*.bak
+.idea/
+.vscode/
+*.sublime-*
+
+# ===================
+# Dependencies
+# ===================
+node_modules/
+package-lock.json
+npm-debug.log
+yarn-error.log
+
+# ===================
+# Build & Temp
+# ===================
+*.tmp
+*.temp
+*.log
+dist/
+build/
+
+# ===================
+# Local Development
+# ===================
+.env
+.env.local
+.server.pid
+
+# ===================
+# Archives
+# ===================
+*.zip
+*.tar.gz
+*.rar
+# AI Workflow System
+.ai-workflow/logs/
+.ai-workflow/session.json
+.ai-workflow/session-history/
+.ai-workflow/test-results/
+.ai-workflow/current-command.md
+.ai-workflow/status.json

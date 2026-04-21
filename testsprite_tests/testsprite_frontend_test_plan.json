@@ -1,0 +1,363 @@
+[
+  {
+    "id": "TC001",
+    "title": "Hero Watch Video Button Functional When Video Available",
+    "description": "Verify that the hero 'Watch video' button on the homepage launches a direct Vimeo video lightbox when a valid video is available.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the homepage."
+      },
+      {
+        "type": "action",
+        "description": "Locate the hero 'Watch video' button."
+      },
+      {
+        "type": "action",
+        "description": "Click the 'Watch video' button."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that a lightbox appears with the embedded Vimeo video player."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the video plays without errors."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Hero Watch Video Button Absent When Video Unavailable",
+    "description": "Ensure that the hero 'Watch video' button is removed or not rendered when the corresponding Vimeo video is unavailable.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Simulate or configure the homepage with no hero video linked."
+      },
+      {
+        "type": "action",
+        "description": "Load the homepage."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm that the 'Watch video' button is not present on the page."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Lesson Video Cards Play Vimeo Videos on Click",
+    "description": "Check that clicking lesson video cards on Home and Education pages opens and plays the correct direct Vimeo embedded educational video.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the Home page."
+      },
+      {
+        "type": "action",
+        "description": "Click on a lesson video card."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that a Vimeo video player opens and plays the associated educational video."
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the Education page."
+      },
+      {
+        "type": "action",
+        "description": "Click on a different lesson video card."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the corresponding Vimeo video plays correctly."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Vimeo Videos Load and Play Without Errors Across About, Education, and Home Pages",
+    "description": "Validate that all embedded Vimeo videos on the About, Education, and Home pages load successfully and play without error messages or playback issues.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the About page."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all embedded Vimeo videos load and play without errors."
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the Education page."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all embedded Vimeo videos load and play without errors."
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the Home page."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify hero and lesson Vimeo videos load and play without errors."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "No Content Blocked or 'Cannot Load Link' Messages on Site",
+    "description": "Ensure the entire website displays no 'content blocked' warnings or 'Cannot load link' error messages in place of videos or external content.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Visit all pages containing embedded videos and external content: Home, About, Education, News."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that no error messages such as 'content blocked' or 'Cannot load link' appear anywhere on the site."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Curated Social News Feed Displays Non-Duplicate, Valid Crypto News",
+    "description": "Verify the social news feed on relevant pages shows curated static news articles from reputed outlets with valid links, distinct images/logos, unique dates, and no duplications.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open pages containing the Social News Feed (Home, News)."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify each news card displays a valid headline, source logo, publication date, and opens a new tab linking to the original article."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm no duplicate news articles or placeholder content appear."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Handpicked Educational News Section Displays Correct Links and Images",
+    "description": "Check that the featured educational news section shows correctly handpicked articles with images and links to crypto recovery/security content.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to pages with the educational news section (Home, News)."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify articles display relevant images and source links opening in new tabs."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that the content aligns with crypto recovery and security topics."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Trending News Section Shows Unique News Cards Without Duplication",
+    "description": "Verify that the Trending News section features distinct large news cards and list items with no duplicate articles, correct source attribution, and functioning links opening in new tabs.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the News page."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm trending news cards and list items are unique with valid metadata (title, source, date)."
+      },
+      {
+        "type": "assertion",
+        "description": "Click links to ensure they open in new tabs correctly."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "All Broken or Missing Images and Icons Correctly Replaced",
+    "description": "Ensure no broken, missing, or misplaced images or icons exist site-wide, including mission/recovery icons, team member photos, and within text content.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Browse all pages (Home, About, Education, News, Blog) and visually inspect images and icons."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no broken image placeholders or broken links appear."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm no images are misplaced inside text paragraphs or have incorrect alt text."
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Site-Wide Brand Name Consistency: 'CountWize' Used Correctly",
+    "description": "Validate that all instances of the brand name use 'CountWize' exactly, replacing incorrect variations like 'Count Wise' or 'Count Wize'.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Search entire site code and content for all occurrences of the brand name."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm all displayed and code references strictly use 'CountWize' with no spacing or capitalization errors."
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "No Em-Dashes or Spaced Hyphens Used in Punctuation",
+    "description": "Check that punctuation across the website replaces any em-dashes or spaced hyphens with appropriate periods or commas.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Review textual content across all pages for punctuation usage."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no em-dashes or spaced hyphens are present; all are replaced by periods or commas as per style guide."
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Core Values Section Layout Correctly Stacks Heading Vertically",
+    "description": "Ensure that the core values section heading is stacked vertically above the description on all screen sizes as per design requirements.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the page containing the core values section."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm the heading text is stacked vertically above the descriptions in desktop and responsive views."
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Footer Contact Information Grouping and Layout",
+    "description": "Verify the footer contact information is logically grouped and visually presented according to design specifications across various device sizes.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Scroll to the footer on all site pages."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that contact details are grouped logically and layout matches design including responsiveness."
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Hero Section Call-To-Action Buttons Stack Vertically",
+    "description": "Confirm that call-to-action buttons within the hero content stack vertically as designed especially on mobile and narrow viewport sizes.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Visit the homepage."
+      },
+      {
+        "type": "assertion",
+        "description": "Resize window to narrow/mobile widths."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify CTAs in the hero section stack vertically with appropriate spacing."
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Blog Grid Layout Centers Odd-Numbered Last Article Correctly",
+    "description": "Validate that the blog grid layout centers the last article if the total number of articles is odd, using correct CSS styling.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the blog page showing an odd number of articles."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the final article is horizontally centered within the grid."
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "All Platform Logos Link to Valid CountWize URLs or Are Removed",
+    "description": "Check all platform logos on the site link to valid CountWize URLs; if URLs are invalid, corresponding logos are removed gracefully.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Identify all platform logos throughout the website."
+      },
+      {
+        "type": "action",
+        "description": "Click each logo to verify URL validity."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm each logo either links to a valid CountWize URL or is not present if no valid link exists."
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Book Covers Display Redesigned Thematic Imagery Matching Topics",
+    "description": "Ensure that all book covers display distinct redesigned images that visually represent their respective topics such as legal, wallet recovery, forensics, scams, and case studies.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open pages where book covers appear."
+      },
+      {
+        "type": "assertion",
+        "description": "Check that each book cover image corresponds clearly to its thematic content and is visually distinct."
+      }
+    ]
+  }
+]

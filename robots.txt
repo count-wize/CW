@@ -1,0 +1,14 @@
+# CountWize Robots.txt
+# Last Updated: January 2026
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://countwize.com/sitemap.xml
+
+# Disallow admin/sensitive paths (if any)
+Disallow: /documents/
+
+# Crawl-delay for politeness
+Crawl-delay: 1
