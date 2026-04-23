@@ -10,6 +10,29 @@
 [build]
   publish = "site"
   functions = "netlify/functions"
+  command = """
+    echo "=== CountWize Build Process ===" && \
+    echo "Starting enterprise-grade build..." && \
+    rm -rf site && \
+    mkdir -p site && \
+    echo "[1/5] Copying HTML files..." && \
+    cp *.html site/ && \
+    echo "[2/5] Copying SEO files..." && \
+    cp robots.txt site/ 2>/dev/null || true && \
+    cp sitemap.xml site/ 2>/dev/null || true && \
+    cp llms.txt site/ 2>/dev/null || true && \
+    echo "[3/5] Copying static assets..." && \
+    cp -r css site/ && \
+    cp -r js site/ && \
+    cp -r images site/ && \
+    cp -r documents site/ && \
+    echo "[4/5] Copying blog content..." && \
+    cp -r blog site/ && \
+    echo "[5/5] Build verification..." && \
+    echo "Files in site directory:" && \
+    ls -la site/ && \
+    echo "=== Build Complete ==="
+  """
 
 [dev]
   publish = "."
