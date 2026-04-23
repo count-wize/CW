@@ -264,7 +264,7 @@ Copyright © 2026 CountWize. All rights reserved.
 
 ## 📞 Contact
 
-- **Website**: [countwize.com](https://countwize.com)
+- **Website**: [countwize.co](https://countwize.co)
 - **Instagram**: [@countwize_](https://www.instagram.com/countwize_)
 - **LinkedIn**: [CountWize](https://www.linkedin.com/company/countwize)
 - **Facebook**: [CountWize](https://www.facebook.com/profile.php?id=61572760483669)

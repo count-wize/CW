@@ -44,6 +44,9 @@ build/
 .env
 .env.local
 .server.pid
+local-server.js
+package.json
+package-lock.json
 
 # ===================
 # Archives
@@ -58,3 +61,6 @@ build/
 .ai-workflow/test-results/
 .ai-workflow/current-command.md
 .ai-workflow/status.json
+
+# Local Netlify folder
+.netlify

@@ -1,14 +1,52 @@
 # CountWize Robots.txt
-# Last Updated: January 2026
+# Last Updated: April 2026
 
 User-agent: *
 Allow: /
-
-# Sitemap
-Sitemap: https://countwize.com/sitemap.xml
-
-# Disallow admin/sensitive paths (if any)
 Disallow: /documents/
 
 # Crawl-delay for politeness
 Crawl-delay: 1
+
+# AI training crawlers — allowed to index public content
+# OpenAI GPTBot
+User-agent: GPTBot
+Allow: /
+
+# Anthropic Claude
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI (Gemini, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+
+# Amazon Alexa / Amazon AI
+User-agent: Amazonbot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Apple
+User-agent: Applebot-Extended
+Allow: /
+
+# Bytedance / TikTok
+User-agent: Bytespider
+Disallow: /
+
+# Sitemap
+Sitemap: https://countwize.co/sitemap.xml
+Sitemap: https://countwize.co/llms.txt

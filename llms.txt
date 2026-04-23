@@ -1,0 +1,38 @@
+# CountWize
+
+> CountWize is a professional cryptocurrency recovery and tax consulting service. We help individuals and businesses recover lost, stolen, or inaccessible digital assets using blockchain forensics, fraud analysis, and legal support.
+
+## Core Services
+
+- [Crypto Recovery](https://countwize.co/recovery.html): Our primary service — blockchain forensics, fraud investigation, and asset recovery for lost or stolen cryptocurrency.
+- [Crypto Recovery Overview](https://countwize.co/crypto-recovery.html): Detailed overview of our cryptocurrency recovery process and methodology.
+- [Crypto Tax Consulting](https://countwize.co/crypto-tax.html): Compliant cryptocurrency tax strategy and reporting guidance.
+- [Recovery Questionnaire](https://countwize.co/recovery-questionnaire.html): Start a recovery case by submitting your situation for review by our specialists.
+
+## Company
+
+- [About CountWize](https://countwize.co/about-us.html): Meet the team of crypto recovery specialists, blockchain forensics experts, and tax consultants.
+- [Team](https://countwize.co/team.html): Individual team members and their areas of expertise.
+- [Contact Us](https://countwize.co/contact-us.html): Get in touch with our recovery specialists.
+
+## Educational Resources
+
+- [Crypto Recovery Guide](https://countwize.co/crypto-recovery-guide.html): Step-by-step guide explaining how to recover stolen or lost cryptocurrency.
+- [Crypto Education](https://countwize.co/crypto-education.html): Learn about blockchain, crypto security, and protecting your digital assets.
+- [Crypto Insights](https://countwize.co/crypto-insights.html): Expert analysis and insights on cryptocurrency recovery trends and blockchain forensics.
+- [FAQ](https://countwize.co/faq-crypto-recovery.html): Frequently asked questions about crypto recovery services.
+- [News](https://countwize.co/news.html): Latest news and updates in the cryptocurrency recovery space.
+
+## Blog
+
+- [Blog](https://countwize.co/blog.html): Articles on crypto scams, security, and recovery strategies.
+- [How to Spot & Avoid Forex Scams](https://countwize.co/blog/forex-scams.html): Identifying and avoiding Forex trading fraud.
+- [How to Check if a Website Is Legitimate](https://countwize.co/blog/how-do-you-check-if-a-website-is-legitimate.html): Methods for verifying website authenticity.
+- [How Does a Crypto Recovery Phrase Work?](https://countwize.co/blog/how-does-a-crypto-recovery-phrase-work.html): Explanation of seed phrases and how to keep them safe.
+- [How to Avoid Losing Your Crypto](https://countwize.co/blog/how-to-avoid-losing-your-crypto-real-mistakes-real-fixes-and-smart-protection-tips.html): Common mistakes and smart security practices for protecting digital assets.
+
+## Legal
+
+- [Privacy Policy](https://countwize.co/privacy-policy.html): How CountWize collects, uses, and protects user data.
+- [Cookie Policy](https://countwize.co/cookie-policy.html): How cookies are used on the CountWize website.
+- [Legal Information](https://countwize.co/legal-page.html): Terms of service and compliance information.

@@ -1,3 +1,228 @@
+# ===========================================
+# CountWize Netlify Configuration v3.0
+# Ultimate Enterprise Audit Plan Implementation
+# Last Updated: January 2026
+# ===========================================
+
+# Build Configuration
+# Creates site directory and copies all static files for deployment
+# Optimized for performance and reliability
 [build]
+  publish = "site"
+  functions = "netlify/functions"
+
+[dev]
   publish = "."
-  command = "echo 'Static site - no build step required'"
+  functions = "netlify/functions"
+  command = """
+    echo "=== CountWize Build Process ===" && \
+    echo "Starting enterprise-grade build..." && \
+    rm -rf site && \
+    mkdir -p site && \
+    echo "[1/5] Copying HTML files..." && \
+    cp *.html site/ && \
+    echo "[2/5] Copying SEO files..." && \
+    cp robots.txt site/ 2>/dev/null || true && \
+    cp sitemap.xml site/ 2>/dev/null || true && \
+    cp llms.txt site/ 2>/dev/null || true && \
+    echo "[3/5] Copying static assets..." && \
+    cp -r css site/ && \
+    cp -r js site/ && \
+    cp -r images site/ && \
+    cp -r documents site/ && \
+    echo "[4/5] Copying blog content..." && \
+    cp -r blog site/ && \
+    echo "[5/5] Build verification..." && \
+    echo "Files in site directory:" && \
+    ls -la site/ && \
+    echo "=== Build Complete ==="
+  """
+
+# ===========================================
+# Security Headers (Part 8: Security Fortress)
+# Phases 281-300: Enterprise-grade security
+# ===========================================
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Phase 283: HSTS - Strict Transport Security
+    # Enforce HTTPS for 1 year with subdomains
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # Phase 281-282: Content Security Policy
+    # Comprehensive CSP with violation reporting
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval'
+        https://ajax.googleapis.com
+        https://www.googletagmanager.com
+        https://www.googleadservices.com
+        https://googleads.g.doubleclick.net
+        https://cdn.livechatinc.com
+        https://api.livechatinc.com
+        https://d3e54v103j8qbb.cloudfront.net
+        https://cdnjs.cloudflare.com
+        https://unpkg.com
+        https://f.vimeocdn.com
+        https://player.vimeo.com
+        https://www.gstatic.com
+        https://connect.facebook.net;
+      style-src 'self' 'unsafe-inline'
+        https://fonts.googleapis.com
+        https://cdnjs.cloudflare.com;
+      font-src 'self' data:
+        https://fonts.gstatic.com;
+      img-src 'self' data: https:
+        https://i.vimeocdn.com
+        https://vimeocdn.com
+        https://cdn.prod.website-files.com
+        https://www.facebook.com;
+      media-src 'self'
+        https://player.vimeo.com
+        https://vimeo.com
+        https://vod-progressive.akamaized.net
+        https://skyfire.vimeocdn.com;
+      frame-src 'self'
+        https://player.vimeo.com
+        https://vimeo.com
+        https://www.googletagmanager.com;
+      connect-src 'self'
+        https://www.google-analytics.com
+        https://analytics.google.com
+        https://www.google.com
+        https://pagead2.googlesyndication.com
+        https://stats.g.doubleclick.net
+        https://ipapi.co
+        https://countwiseapi.space
+        https://countriesnow.space
+        https://api.telegram.org
+        https://player.vimeo.com
+        https://vimeo.com
+        https://fresnel.vimeocdn.com
+        https://collector.vimeocdn.com
+        https://unpkg.com
+        https://www.facebook.com
+        https://connect.facebook.net;
+      frame-ancestors 'self';
+      base-uri 'self';
+      form-action 'self' https://countwiseapi.space;
+    """
+    
+    # Phase 284: Prevent clickjacking
+    X-Frame-Options = "SAMEORIGIN"
+    
+    # Phase 285: Prevent MIME type sniffing
+    X-Content-Type-Options = "nosniff"
+    
+    # XSS Protection (legacy browsers)
+    X-XSS-Protection = "1; mode=block"
+    
+    # Phase 286: Referrer Policy - Privacy protection
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Phase 287-288: Permissions Policy - Disable unused APIs
+    Permissions-Policy = "accelerometer=(), ambient-light-sensor=(), autoplay=(self), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(self), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(self), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(self), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()"
+
+# ===========================================
+# Cache Control - Static Assets
+# ===========================================
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/documents/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ===========================================
+# Redirects
+# ===========================================
+
+# www to non-www redirect
+[[redirects]]
+  from = "https://www.countwize.co/*"
+  to = "https://countwize.co/:splat"
+  status = 301
+  force = true
+
+# Clean URL for crypto recovery
+[[redirects]]
+  from = "/crypto-recovery"
+  to = "/recovery.html"
+  status = 200
+
+# Blog redirects (for SEO preservation)
+[[redirects]]
+  from = "/forex-scams.html"
+  to = "/blog/forex-scams.html"
+  status = 301
+
+[[redirects]]
+  from = "/how-do-you-check-if-a-website-is-legitimate.html"
+  to = "/blog/how-do-you-check-if-a-website-is-legitimate.html"
+  status = 301
+
+[[redirects]]
+  from = "/how-does-a-crypto-recovery-phrase-work.html"
+  to = "/blog/how-does-a-crypto-recovery-phrase-work.html"
+  status = 301
+
+# Legacy page redirects
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact-us.html"
+  status = 301
+
+[[redirects]]
+  from = "/legal.html"
+  to = "/legal-page.html"
+  status = 301
+
+[[redirects]]
+  from = "/about-old.html"
+  to = "/about-us.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog-old.html"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/faq-old.html"
+  to = "/faq-crypto-recovery.html"
+  status = 301
+
+[[redirects]]
+  from = "/education-old.html"
+  to = "/crypto-education.html"
+  status = 301
+
+[[redirects]]
+  from = "/old-home.html"
+  to = "/"
+  status = 301
+
+# success.php alias (for ad campaigns that reference .php)
+[[redirects]]
+  from = "/success.php"
+  to = "/success.html"
+  status = 301
+
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
