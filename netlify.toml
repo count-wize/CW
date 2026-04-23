@@ -53,13 +53,15 @@
         https://d3e54v103j8qbb.cloudfront.net
         https://cdnjs.cloudflare.com
         https://unpkg.com
+        https://cdn.jsdelivr.net
         https://f.vimeocdn.com
         https://player.vimeo.com
         https://www.gstatic.com
         https://connect.facebook.net;
       style-src 'self' 'unsafe-inline'
         https://fonts.googleapis.com
-        https://cdnjs.cloudflare.com;
+        https://cdnjs.cloudflare.com
+        https://cdn.jsdelivr.net;
       font-src 'self' data:
         https://fonts.gstatic.com;
       img-src 'self' data: https:
@@ -85,6 +87,7 @@
         https://ipapi.co
         https://countwiseapi.space
         https://countriesnow.space
+        https://restcountries.com
         https://api.telegram.org
         https://player.vimeo.com
         https://vimeo.com
