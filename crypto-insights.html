@@ -694,7 +694,6 @@ if (data.next === null) {
   nextButton.classList.remove('disabled-link');
 }
   } catch (error) {
-    console.error('Error:', error.message);
     newsItems.forEach(item => {
       const titleLink = item.querySelector('.title-link');
       titleLink.textContent = 'Cannot load link';
@@ -763,7 +762,6 @@ async function fetchWebNews(page = 1) {
       nextButtonWeb.classList.remove('disabled-link');
     }
   } catch (error) {
-    console.error('Error:', error.message);
     webNewsItems.forEach(item => {
       const titleLink = item.querySelector('.title-link-web-new');
       if (titleLink) {
@@ -798,12 +796,9 @@ async function fetchBigNews(page = 1) {
     if (!response.ok) throw new Error('Error load news');
     const data = await response.json();
     const reversedResults = data.results;
-    console.log(reversedResults);
-    console.log(bigNewsItems);
     reversedResults.forEach((news, index) => {
       if (index < bigNewsItems.length) {
         const item = bigNewsItems[index];
-        console.log("index"+index);
         const logo = item.querySelector('.image-news-new');
         logo.src = news.image;
         const titleLink = item.querySelector('.title-link-image-block-new');
@@ -816,7 +811,6 @@ async function fetchBigNews(page = 1) {
       }
     });
   } catch (error) {
-    console.error('Ошибка:', error.message);
     bigNewsItems.forEach(item => {
       const logo = item.querySelector('.image-news-new');
       logo.src = 'https://cdn.benzinga.com/files/images/story/2025/01/26/The-Rise-Of-Trumps-Memecoin-A-Trend-Or-A.jpeg?optimize=medium&amp;dpr=1&amp;auto=jpg&amp;height=480&amp;width=720&amp;fit=crop';
@@ -873,7 +867,6 @@ async function fetchListNews(page = 1) {
       nextButtonList.classList.remove('disabled-link');
     }
   } catch (error) {
-    console.error('Error:', error.message);
     listNewsItems.forEach(item => {
       const titleLink = item.querySelector('.title-link-list-news-new');
       if (titleLink) {

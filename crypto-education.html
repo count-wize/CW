@@ -818,7 +818,6 @@ if (data.next === null) {
   nextButton.classList.remove('disabled-link');
 }
   } catch (error) {
-    console.error('Error:', error.message);
     newsItems.forEach(item => {
       const titleLink = item.querySelector('.title-link');
       titleLink.textContent = 'Cannot load link';
@@ -887,7 +886,6 @@ async function fetchWebNews(page = 1) {
       nextButtonWeb.classList.remove('disabled-link');
     }
   } catch (error) {
-    console.error('Error:', error.message);
     webNewsItems.forEach(item => {
       const titleLink = item.querySelector('.title-link-web-new');
       if (titleLink) {
@@ -971,9 +969,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch("https://ipapi.co/json/");
                 const data = await response.json();
                 return data.country_code.toLowerCase(); // Получаем код страны (например, "ua", "us")
-            } catch (error) {
-                console.error("Ошибка получения страны:", error);
-                return "us"; // Если не удалось определить, используем США по умолчанию
+            } catch {
+                return "us";
             }
         }
         document.addEventListener("DOMContentLoaded", async function() {

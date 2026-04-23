@@ -10082,6 +10082,8 @@ blockquote {
   width: 0;
   height: 0;
   pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .radio-button.w-radio-input {
@@ -10174,6 +10176,22 @@ blockquote {
   margin-bottom: 0;
   padding-left: 0;
   display: flex;
+}
+
+.radio-button-field-2.w-radio::before,
+.radio-button-field-2.w-radio::after {
+  content: none;
+  display: none;
+}
+
+.radio-button-field-2 > input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .radio-button-2 {
