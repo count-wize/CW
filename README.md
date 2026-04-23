@@ -8,14 +8,14 @@ Professional crypto recovery services website. CountWize offers secure, efficien
 
 ## 🎯 Overview
 
-This is an enterprise-grade static HTML/CSS/JavaScript website deployed on Netlify. Built following the **Ultimate Enterprise Audit Plan v3.0** - a 320-phase FinTech-grade complete overhaul ensuring Swiss Watch precision and J.P. Morgan professionalism.
+This is a static HTML/CSS/JavaScript website deployed on Netlify with serverless functions for backend integrations. Built on a Webflow foundation with a fully custom design system.
 
 ## ✨ Key Features
 
 - **Enterprise Design System**: 100+ CSS design tokens for colors, typography, spacing, and elevation
 - **Responsive Design**: Mobile-first approach, optimized for all devices (320px - 1920px)
 - **Video Education**: Vimeo-hosted educational videos with smooth lesson switching
-- **Contact Forms**: Multiple contact forms with real-time validation
+- **Contact Forms**: Multiple contact forms with real-time validation and Telegram notifications
 - **Live Chat**: LiveChat integration for real-time customer support
 - **SEO Optimized**: Schema.org structured data, Open Graph, canonical URLs
 - **Security Hardened**: CSP, HSTS, X-Frame-Options, and more
@@ -28,9 +28,11 @@ This is an enterprise-grade static HTML/CSS/JavaScript website deployed on Netli
 | **Frontend** | HTML5, CSS3, JavaScript (ES6+) |
 | **Design System** | Custom CSS with Webflow foundation |
 | **Hosting** | Netlify (CDN, automatic deployments) |
+| **Serverless** | Netlify Functions (Node.js) |
 | **Video** | Vimeo embeds with custom player |
 | **Analytics** | Google Analytics 4 + Google Ads |
 | **Chat** | LiveChat integration |
+| **Notifications** | Telegram Bot API |
 | **Fonts** | Google Fonts (Be Vietnam Pro, Poppins) |
 
 ## 🚀 Quick Start
@@ -39,8 +41,11 @@ This is an enterprise-grade static HTML/CSS/JavaScript website deployed on Netli
 
 ```bash
 # Clone the repository
-git clone https://github.com/DaveXRouz/CountWize.git
+git clone https://github.com/Arvin-DeltaX/CountWize.git
 cd CountWize
+
+# Install dependencies (for Netlify functions)
+npm install
 
 # Start a local server (Python 3)
 python3 -m http.server 8000
@@ -51,28 +56,35 @@ npx serve .
 # Visit http://localhost:8000
 ```
 
+### Environment Variables (for serverless functions)
+
+Create a `.env` file or set in Netlify dashboard:
+
+```
+TELEGRAM_BOT_TOKEN=your_bot_token
+TELEGRAM_CHAT_ID=your_chat_id
+```
+
 ### Production Deployment
 
-The site deploys automatically to Netlify when changes are pushed to the `main` branch.
+The site deploys automatically to Netlify when changes are pushed to the `main` branch. Serverless functions in `netlify/functions/` are deployed alongside the static site.
 
 ```bash
-# Verify build locally
-./netlify.toml # Build creates 'site' directory
-
-# Push to deploy
+# Push to deploy (triggers Netlify CI/CD)
 git push origin main
 ```
 
 ## 📁 Project Structure
 
 ```
-CountWize-Website/
-├── 📄 HTML Pages
+CountWize/
+├── 📄 HTML Pages (24 pages)
 │   ├── index.html                    # Homepage
 │   ├── about-us.html                 # About page
 │   ├── contact-us.html               # Contact page
 │   ├── recovery.html                 # Main recovery service
 │   ├── recovery-questionnaire.html   # Recovery intake form
+│   ├── success.html                  # Form submission success
 │   ├── crypto-recovery.html          # Recovery information
 │   ├── crypto-recovery-guide.html    # Recovery guide
 │   ├── crypto-education.html         # Education hub
@@ -94,6 +106,9 @@ CountWize-Website/
 │   ├── how-does-a-crypto-recovery-phrase-work.html
 │   └── how-to-avoid-losing-your-crypto-*.html
 │
+├── 📁 netlify/functions/             # Serverless functions
+│   └── telegram.js                   # Telegram bot notification handler
+│
 ├── 📁 css/
 │   ├── main.css                      # Main stylesheet (17K+ lines)
 │   ├── normalize.css                 # CSS reset
@@ -102,18 +117,20 @@ CountWize-Website/
 ├── 📁 js/
 │   └── webflow.js                    # Webflow interactions
 │
-├── 📁 images/                        # Image assets (176 files)
-│   ├── *.svg                         # Vector graphics (69)
-│   ├── *.webp                        # Optimized images (69)
-│   └── *.jpg                         # Photos (20+)
+├── 📁 images/                        # Image assets (176+ files)
+│   ├── *.svg                         # Vector graphics
+│   ├── *.webp                        # Optimized images
+│   └── *.jpg                         # Photos
 │
 ├── 📁 documents/
 │   └── countwize-iso-27001-2111-1.pdf
 │
 ├── 📄 Configuration
-│   ├── netlify.toml                  # Netlify configuration
+│   ├── netlify.toml                  # Netlify build, headers, redirects
+│   ├── package.json                  # Node dependencies (dotenv)
 │   ├── robots.txt                    # Search engine directives
-│   └── sitemap.xml                   # XML sitemap
+│   ├── sitemap.xml                   # XML sitemap
+│   └── llms.txt                      # LLM context file
 │
 └── 📄 Documentation
     ├── README.md                     # This file
@@ -164,9 +181,10 @@ Green-tinted brand shadows with 5 elevation levels.
 ### CSP Domains
 
 ```
-script-src: ajax.googleapis.com, googletagmanager.com, cdnjs.cloudflare.com, player.vimeo.com
-frame-src: player.vimeo.com, vimeo.com
-img-src: i.vimeocdn.com, cdn.prod.website-files.com
+script-src:  ajax.googleapis.com, googletagmanager.com, cdnjs.cloudflare.com, player.vimeo.com
+frame-src:   player.vimeo.com, vimeo.com
+img-src:     i.vimeocdn.com, cdn.prod.website-files.com
+connect-src: api.telegram.org, countwiseapi.space, countriesnow.space, ipapi.co
 ```
 
 ## 📊 SEO & Structured Data
@@ -271,4 +289,4 @@ Copyright © 2026 CountWize. All rights reserved.
 
 ---
 
-*Built with ❤️ following the Ultimate Enterprise Audit Plan v3.0*
+*© 2026 CountWize. All rights reserved.*
