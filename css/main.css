@@ -18817,3 +18817,23 @@ a.supported-platforms-logo-item,
   transform: none;
   transition: opacity 0.6s ease;
 }
+
+/* Cookiebot — fix invisible toggle labels caused by gradient text styles and Cookiebot dark-theme mismatch */
+#CybotCookiebotDialog h1,
+#CybotCookiebotDialog h2,
+#CybotCookiebotDialog h3,
+#CybotCookiebotDialog h4,
+#CybotCookiebotDialog h5,
+#CybotCookiebotDialog h6,
+#CybotCookiebotDialog span,
+#CybotCookiebotDialogBodyLevelButtonsSelectPane * {
+  background-image: none !important;
+  -webkit-text-fill-color: unset !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+}
+
+#CybotCookiebotDialog .CybotCookiebotDialogBodyLevelButtonDescription {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
