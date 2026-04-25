@@ -28,6 +28,7 @@ node_modules/
 package-lock.json
 npm-debug.log
 yarn-error.log
+deno.lock
 
 # ===================
 # Build & Temp
@@ -64,3 +65,6 @@ package-lock.json
 
 # Local Netlify folder
 .netlify
+
+# CountWize — Site Ad-Readiness Audit
+countwize-site-ad-readiness-audit.md

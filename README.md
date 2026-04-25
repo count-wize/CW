@@ -184,7 +184,7 @@ Green-tinted brand shadows with 5 elevation levels.
 script-src:  ajax.googleapis.com, googletagmanager.com, cdnjs.cloudflare.com, player.vimeo.com
 frame-src:   player.vimeo.com, vimeo.com
 img-src:     i.vimeocdn.com, cdn.prod.website-files.com
-connect-src: api.telegram.org, countwiseapi.space, countriesnow.space, ipapi.co
+connect-src: api.telegram.org, countriesnow.space, ipapi.co
 ```
 
 ## 📊 SEO & Structured Data

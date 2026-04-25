@@ -1,9 +1,11 @@
 # CountWize Robots.txt
-# Last Updated: April 2026
+# Last Updated: 2026-04-25 (P9.5 — added Disallow: /admin/ and /.netlify/)
 
 User-agent: *
 Allow: /
 Disallow: /documents/
+Disallow: /admin/
+Disallow: /.netlify/
 
 # Crawl-delay for politeness
 Crawl-delay: 1

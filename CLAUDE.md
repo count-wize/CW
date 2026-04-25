@@ -62,7 +62,7 @@ Fonts: Be Vietnam Pro (body), Poppins (headings) via Google Fonts.
 - **Video**: Vimeo embeds with custom player
 - **Chat**: LiveChat integration
 - **Phone Input**: intl-tel-input library for international phone validation
-- **Forms**: Submit to countwiseapi.space and telegram-vercel-seven.vercel.app
+- **Forms**: Submit to Netlify Function (`/.netlify/functions/telegram`) → forwards to Telegram bot
 
 ## Security Configuration
 
@@ -76,7 +76,7 @@ Security headers are configured in `netlify.toml`. When adding new external reso
 
 When adding/modifying pages:
 - Update `sitemap.xml` with new URLs
-- Add Schema.org JSON-LD markup (Organization, Service, BreadcrumbList, etc.)
+- Add Schema.org JSON-LD markup (Organization, Article, BreadcrumbList) — do NOT add Service, Product, or Offer schema (Google financial-services policy trigger)
 - Include meta title (50-60 chars), description (150-160 chars), Open Graph tags
 - Ensure canonical URL is set
 
@@ -84,7 +84,16 @@ When adding/modifying pages:
 
 - HTML: 2-space indentation, semantic HTML5 tags
 - CSS: Use existing design tokens, BEM-like class naming
-- Commit format: `type: Short description` (types: feat, fix, docs, style, refactor, perf, chore)
+- Commit format: `type: Short description` (types: feat, fix, content, seo, security, style, refactor, perf, chore, docs)
+- Scoped commits for roadmap tasks: `fix(P0.1): Remove Avraham Bental from about-us.html`
+
+## Compliance Rules (FCA / Google Ads)
+
+- Do **not** add `Service`, `Product`, or `Offer` schema — Google financial-services policy trigger
+- Banned phrase: "recovery services" — use "on-chain tracing" instead
+- Every page must include the FCA non-authorisation disclaimer block (verbatim from agents/copy-rewriter.md)
+- Every form must include the consent checkbox (verbatim from agents/copy-rewriter.md)
+- All compliance changes reference task IDs in ads-readiness-roadmap.md
 
 ## Common Issues
 

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How blockchain tracing works — an honest UK guide | CountWize</title>
+  <meta name="description" content="How on-chain forensics actually works, what an intelligence report contains, what the UK police can and cannot do. CountWize is not FCA-authorised.">
+  <meta property="og:title" content="How blockchain tracing works — an honest UK guide | CountWize">
+  <meta property="og:description" content="How on-chain forensics actually works, what an intelligence report contains, what the UK police can and cannot do. CountWize is not FCA-authorised.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://countwize.co/guides/how-crypto-tracing-works.html">
+  <meta property="og:image" content="https://countwize.co/images/1746119745842.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How blockchain tracing works — an honest UK guide | CountWize">
+  <meta name="twitter:description" content="How on-chain forensics actually works, what an intelligence report contains, what the UK police can and cannot do. CountWize is not FCA-authorised.">
+  <meta name="twitter:image" content="https://countwize.co/images/1746119745842.webp">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link rel="canonical" href="https://countwize.co/guides/how-crypto-tracing-works.html">
+  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="../css/main.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com" rel="preconnect">
+  <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="520bef82-a2fe-41f7-9281-9aa873562db6" data-blockingmode="auto" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({ google: { families: ["Be Vietnam Pro:regular,500,600,700","Poppins:300,regular,500,600,700"] } });</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <!-- Google Analytics 4 + Google Ads Conversion Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NX03W5PQR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('set', 'developer_id.dZGVlNj', true);
+    gtag('config', 'G-0NX03W5PQR');
+    gtag('config', 'AW-447543988');
+  </script>
+  <!-- Meta Pixel: consent-gated via /js/meta-pixel.js — P2.6 -->
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CountWize Ltd",
+    "url": "https://countwize.co",
+    "logo": "https://countwize.co/images/logo.svg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Unit 13 Freeland Park, Wareham Road",
+      "addressLocality": "Lytchett Matravers, Poole",
+      "postalCode": "BH16 6FA",
+      "addressCountry": "GB"
+    },
+    "identifier": "UK Companies House 16198508",
+    "sameAs": [
+      "https://find-and-update.company-information.service.gov.uk/company/16198508",
+      "https://www.linkedin.com/company/countwize"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How blockchain tracing works — honest UK guide",
+    "description": "How on-chain forensics actually works, what an intelligence report contains, what the UK police can and cannot do with blockchain data, and realistic outcomes language.",
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "author": {
+      "@type": "Person",
+      "name": "Liam Bennett",
+      "url": "https://www.linkedin.com/in/liam-bennett-countwize",
+      "jobTitle": "Lead Analyst",
+      "worksFor": { "@type": "Organization", "name": "CountWize Ltd" }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CountWize Ltd",
+      "logo": { "@type": "ImageObject", "url": "https://countwize.co/images/logo.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://countwize.co/guides/how-crypto-tracing-works.html" }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is blockchain forensics?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blockchain forensics — also called on-chain tracing or blockchain analytics — is the discipline of analysing publicly recorded cryptocurrency transaction data to follow the movement of funds between wallet addresses. Because most major blockchains (Bitcoin, Ethereum, and others) record every transaction permanently and publicly, a trained analyst can trace funds from the point of loss through subsequent wallets, identify destination exchanges, and produce an intelligence report documenting the movement of the cryptocurrency."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the police trace bitcoin transactions in the UK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, UK law enforcement uses commercial blockchain analytics platforms to trace bitcoin and other cryptocurrency transactions. The National Crime Agency, Metropolitan Police, and specialist Economic Crime Units have all conducted successful on-chain tracing operations. However, police resources are finite and cases are prioritised by financial scale, available intelligence, and actionability. Most individual consumer fraud reports do not result in a dedicated police tracing exercise — which is why victims sometimes seek a private on-chain tracing report to submit alongside their Action Fraud crime reference number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does an on-chain intelligence report contain?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A professional on-chain intelligence report typically documents: the transaction history from the victim's wallet through each subsequent address; address clustering analysis showing which wallets appear to be controlled by the same actor; whether funds reached a known centralised exchange (and if so, which one); the current status of the funds (still held in a wallet, dispersed further, or converted to fiat); and a summary of the evidence suitable for submission to law enforcement or use in civil proceedings. It is evidence, not a remedy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does on-chain tracing take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A straightforward tracing exercise — following one or two transactions through the blockchain to identify destination wallets and any linked exchange accounts — typically takes between three and ten working days. Complex cases involving multiple blockchains, mixers or tumblers, or dozens of intermediary hops can take longer. CountWize provides an honest scope estimate before any work begins and does not proceed without your agreement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CountWize guarantee recovery of cryptocurrency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. CountWize Ltd does not guarantee recovery of any cryptocurrency. We provide on-chain tracing and educational services only. Whether tracing intelligence leads to a recovery outcome depends on many factors outside our control, including whether the funds still exist in an identifiable wallet, whether the destination exchange cooperates with law enforcement or a legal process, and whether the case is prioritised by the relevant authorities. Any firm that guarantees recovery of cryptocurrency should be treated with extreme caution and checked on the FCA ScamSmart warning list."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is address clustering in blockchain analysis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Address clustering is an analytical technique used in blockchain forensics to identify groups of wallet addresses that are likely controlled by the same individual or organisation. Because many cryptocurrency wallets generate a new address for each transaction, a single actor may control hundreds or thousands of addresses. Clustering algorithms use patterns in transaction inputs, timing, and spending behaviour to group addresses that appear to belong to the same controller, helping analysts build a more complete picture of how funds have moved."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is CountWize FCA-authorised?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. CountWize Ltd is not authorised or regulated by the Financial Conduct Authority. We provide educational content and on-chain tracing services only. We do not provide financial advice, legal advice, or a guarantee of asset recovery. You can verify the regulatory status of any firm at fca.org.uk/scamsmart."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://countwize.co/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://countwize.co/guides/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How blockchain tracing works",
+        "item": "https://countwize.co/guides/how-crypto-tracing-works.html"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+/* FCA sticky bar */
+#fca-notice{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;border-top:2px solid #07B96A;overflow:hidden;max-height:300px;transition:transform 0.4s ease,opacity 0.35s ease;}
+#fca-notice.fca-closing{transform:translateY(100%);opacity:0;}
+.fca-bar{color:#e8e8f0;font-size:12px;line-height:1.4;text-align:center;padding:8px 48px 8px 16px;}
+.fca-disclaimer-block{color:#c8c8d8;font-size:13px;line-height:1.6;border-top:1px solid #07B96A;padding:14px 48px 14px 20px;max-width:900px;margin:0 auto;}
+.fca-disclaimer-block p{margin:0 0 6px;}
+.fca-disclaimer-block p:last-child{margin-bottom:0;}
+.fca-disclaimer-block a{color:#07B96A;text-decoration:underline;}
+.fca-notice-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#e8e8f0;font-size:26px;line-height:1;cursor:pointer;padding:4px 8px;opacity:.6;}
+.fca-notice-close:hover{opacity:1;}
+/* Safety box */
+.safety-box{background:#0d0d12;border-left:4px solid #07B96A;border-radius:6px;padding:20px 24px;margin:32px auto;max-width:780px;font-size:13px;line-height:1.7;color:#c8c8d8;}
+.safety-box strong{color:#e8e8f0;}
+.safety-box a{color:#07B96A;text-decoration:underline;}
+/* Guide page layout */
+.guide-page{max-width:820px;margin:0 auto;padding:40px 24px 80px;}
+.guide-hero{padding:60px 0 40px;border-bottom:1px solid rgba(7,185,106,0.2);margin-bottom:40px;}
+.guide-hero h1{font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:#e8e8f0;line-height:1.25;margin:0 0 16px;}
+.guide-hero .hero-sub{font-size:1rem;color:#a0a0b8;line-height:1.7;margin:0 0 28px;max-width:680px;}
+.guide-hero .byline{font-size:0.8rem;color:#666688;margin-top:20px;}
+.guide-cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 20px;}
+.btn-primary{display:inline-block;padding:12px 24px;background:#07B96A;color:#050b0c;font-weight:600;font-size:0.9rem;border-radius:4px;text-decoration:none;transition:background 0.2s;}
+.btn-primary:hover{background:#05a05d;}
+.btn-secondary{display:inline-block;padding:12px 24px;background:transparent;color:#07B96A;font-weight:600;font-size:0.9rem;border-radius:4px;text-decoration:none;border:1px solid #07B96A;transition:background 0.2s,color 0.2s;}
+.btn-secondary:hover{background:#07B96A;color:#050b0c;}
+/* FCA disclaimer block (above fold) */
+.fca-notice-inline{background:#0d0d20;border:1px solid #07B96A;border-radius:6px;padding:20px 24px;margin:32px 0;font-size:13px;line-height:1.7;color:#c8c8d8;}
+.fca-notice-inline strong{color:#e8e8f0;}
+.fca-notice-inline a{color:#07B96A;text-decoration:underline;}
+/* TOC */
+.toc-box{background:#111122;border:1px solid #1e1e3a;border-radius:6px;padding:20px 24px;margin:32px 0;}
+.toc-box h2{font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:600;color:#e8e8f0;margin:0 0 12px;text-transform:uppercase;letter-spacing:0.04em;}
+.toc-box ol{margin:0;padding-left:20px;color:#a0a0b8;font-size:0.9rem;line-height:2;}
+.toc-box a{color:#07B96A;text-decoration:none;}
+.toc-box a:hover{text-decoration:underline;}
+/* Article body */
+.guide-body h2{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:600;color:#e8e8f0;margin:48px 0 16px;padding-top:8px;border-top:1px solid rgba(7,185,106,0.15);}
+.guide-body h3{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:600;color:#d0d0e8;margin:32px 0 12px;}
+.guide-body p{color:#c0c0d8;font-size:0.95rem;line-height:1.85;margin:0 0 16px;}
+.guide-body ul,.guide-body ol{color:#c0c0d8;font-size:0.95rem;line-height:1.85;margin:0 0 20px;padding-left:24px;}
+.guide-body li{margin-bottom:8px;}
+.guide-body a{color:#07B96A;text-decoration:underline;}
+.guide-body a:hover{color:#05a05d;}
+.guide-body strong{color:#e8e8f0;}
+/* Process steps */
+.process-steps{background:#0d0d20;border:1px solid rgba(7,185,106,0.25);border-radius:6px;padding:24px 28px;margin:24px 0 32px;counter-reset:steps;}
+.process-steps li{list-style:none;counter-increment:steps;padding-left:0;margin-bottom:16px;color:#c0c0d8;font-size:0.95rem;line-height:1.75;position:relative;padding-left:42px;}
+.process-steps li::before{content:counter(steps);position:absolute;left:0;top:0;width:28px;height:28px;background:#07B96A;color:#050b0c;font-weight:700;font-size:0.8rem;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.process-steps li strong{color:#e8e8f0;}
+/* Limits panel */
+.limits-panel{background:#0d0d12;border-left:4px solid #ff6b6b;border-radius:0 6px 6px 0;padding:20px 24px;margin:32px 0;}
+.limits-panel h3{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;color:#e8e8f0;margin:0 0 12px;}
+.limits-panel ul{margin:0;padding-left:20px;color:#c0c0d8;font-size:0.9rem;line-height:1.8;}
+.limits-panel a{color:#07B96A;text-decoration:underline;}
+/* Case handler card */
+.case-handler-card{background:#111122;border:1px solid #1e1e3a;border-radius:8px;padding:24px;margin:40px 0;display:flex;gap:24px;align-items:flex-start;}
+.case-handler-photo{width:80px;height:80px;border-radius:8px;background:#2a2a40;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#666688;text-align:center;padding:4px;line-height:1.3;}
+.case-handler-info{flex:1;}
+.case-handler-name{font-family:'Poppins',sans-serif;font-size:1.05rem;font-weight:600;color:#e8e8f0;margin:0 0 4px;}
+.case-handler-role{font-size:0.85rem;color:#07B96A;margin:0 0 8px;}
+.case-handler-bio{font-size:0.88rem;color:#a0a0b8;line-height:1.6;margin:0 0 8px;}
+.case-handler-linkedin{font-size:0.82rem;color:#07B96A;text-decoration:none;}
+.case-handler-linkedin:hover{text-decoration:underline;}
+/* CTA band */
+.cta-band{background:#07B96A;border-radius:8px;padding:40px 32px;margin:48px 0;text-align:center;}
+.cta-band h2{font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:700;color:#050b0c;margin:0 0 8px;}
+.cta-band p{font-size:0.95rem;color:#082b1b;margin:0 0 20px;}
+.cta-band .btn-cta{display:inline-block;padding:14px 32px;background:#050b0c;color:#07B96A;font-weight:700;font-size:0.95rem;border-radius:4px;text-decoration:none;transition:background 0.2s;}
+.cta-band .btn-cta:hover{background:#111;}
+/* External resources */
+.ext-resources{margin:40px 0;padding:24px;background:#0a0a18;border:1px solid #1e1e3a;border-radius:6px;}
+.ext-resources h2{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;color:#e8e8f0;margin:0 0 16px;}
+.ext-resources ul{margin:0;padding-left:0;list-style:none;}
+.ext-resources li{margin-bottom:10px;}
+.ext-resources a{color:#07B96A;text-decoration:underline;font-size:0.92rem;}
+.ext-resources a:hover{color:#05a05d;}
+/* FAQ section */
+.faq-item{border-bottom:1px solid #1e1e3a;padding:20px 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-item h3{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;color:#e8e8f0;margin:0 0 10px;}
+.faq-item p{color:#a0a0b8;font-size:0.9rem;line-height:1.75;margin:0;}
+.faq-item a{color:#07B96A;text-decoration:underline;}
+/* Callout box */
+.callout-box{background:#0d0d20;border-left:4px solid #07B96A;border-radius:0 6px 6px 0;padding:18px 22px;margin:24px 0;font-size:0.92rem;color:#c0c0d8;line-height:1.75;}
+.callout-box strong{color:#e8e8f0;}
+/* Responsive */
+@media (max-width:767px){
+  .guide-page{padding:24px 16px 60px;}
+  .guide-hero{padding:32px 0 28px;}
+  .case-handler-card{flex-direction:column;}
+  .cta-band{padding:28px 20px;}
+}
+  </style>
+</head>
+<body class="body-4">
+
+  <!-- 1. STICKY TOP DISCLAIMER BAR -->
+  <div id="fca-notice" role="note" aria-label="Regulatory notice">
+    <div class="fca-bar">CountWize Ltd (<a href="https://find-and-update.company-information.service.gov.uk/company/16198508" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Co. 16198508</a>) is not FCA-authorised. Educational content and on-chain tracing services only. No guarantee of recovery.</div>
+    <div class="fca-disclaimer-block">
+      <p><strong>CountWize Ltd is not FCA-authorised.</strong> This website provides educational content and on-chain tracing services only. We do not provide financial advice, legal advice, or a guarantee of asset recovery. Recovery outcomes depend on the specific circumstances of each case.</p>
+      <p>If you have been a victim of fraud, report to <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer">actionfraud.police.uk</a>. Check the regulatory status of any firm at <a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener noreferrer">fca.org.uk/scamsmart</a>.</p>
+    </div>
+    <button class="fca-notice-close" id="fca-notice-close" aria-label="Dismiss notice">&times;</button>
+  </div>
+  <script>
+  (function(){
+    var n=document.getElementById('fca-notice');
+    if(localStorage.getItem('fca-closed')){n.style.display='none';}
+    document.getElementById('fca-notice-close').addEventListener('click',function(){
+      n.classList.add('fca-closing');
+      setTimeout(function(){n.style.display='none';},420);
+      localStorage.setItem('fca-closed','1');
+    });
+  })();
+  </script>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="wrapper-page" id="main-content" role="main">
+
+    <!-- NAVIGATION -->
+    <div data-w-id="nav-bar" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-2 w-nav">
+      <div class="navbar-wrapper">
+        <a href="../index.html" class="navbar-logo-link w-inline-block"><img src="../images/webclip.png" loading="lazy" alt="CountWize Logo" height="36" class="navbar-logo-image"></a>
+        <nav role="navigation" class="navbar-menu w-nav-menu">
+          <div class="navbar-links-wrapper">
+            <a href="../index.html" class="navbar-link w-nav-link">Home</a>
+            <a href="../about-us.html" class="navbar-link w-nav-link">About</a>
+            <a href="../crypto-recovery.html" class="navbar-link w-nav-link">Crypto Recovery</a>
+            <a href="../crypto-recovery-guide.html" class="navbar-link w-nav-link">Crypto Recovery Guide</a>
+            <div data-hover="false" data-delay="0" class="navbar-dropdown w-dropdown">
+              <div class="navbar-dropdown-toggle w-dropdown-toggle">
+                <div>Resources</div>
+                <div class="code-icon w-embed"><svg width="10" height="6" viewbox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 0.75L5 5.25L9.5 0.75" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+              </div>
+              <nav class="navbar-dropdown-list w-dropdown-list">
+                <a href="../blog.html" class="navbar-link drop w-dropdown-link">Blog</a>
+                <a href="../faq-crypto-recovery.html" class="navbar-link drop w-dropdown-link">FAQ</a>
+                <a href="../crypto-education.html" class="navbar-link drop w-dropdown-link">News</a>
+              </nav>
+            </div>
+            <a href="../crypto-education.html" class="navbar-link w-nav-link">Education</a>
+          </div>
+          <div class="navbar-cta-wrapper">
+            <div class="social-icons nav">
+              <a href="https://www.instagram.com/countwize_" target="_blank" rel="noopener noreferrer" class="social-link w-inline-block"><img src="../images/instagram-3.svg" loading="lazy" alt="instagram"></a>
+              <a href="https://www.linkedin.com/company/countwize" target="_blank" rel="noopener noreferrer" class="social-link w-inline-block"><img src="../images/vector-1.svg" loading="lazy" alt="linkedin"></a>
+              <a href="https://www.facebook.com/profile.php?id=61572760483669" target="_blank" rel="noopener noreferrer" class="social-link w-inline-block"><img src="../images/vector.svg" loading="lazy" alt="facebook"></a>
+            </div>
+            <a href="../contact-us.html" class="navbar-contact-button w-inline-block">
+              <div>Contact Us</div>
+            </a>
+          </div>
+        </nav>
+        <div class="navbar-menu-button w-nav-button" aria-expanded="false" aria-label="Toggle navigation menu">
+          <div class="navbar-menu-button-wrapper">
+            <div class="navbar-menu-button-lines">
+              <div class="navbar-menu-button-line"></div>
+              <div class="navbar-menu-button-line-middle"></div>
+              <div class="navbar-menu-button-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line-top-wrapper"><div class="line"></div></div>
+
+    <!-- PAGE CONTENT -->
+    <article class="guide-page">
+
+      <!-- 2. HERO -->
+      <header class="guide-hero" id="top">
+        <h1>How blockchain tracing works — honest UK guide</h1>
+        <p class="hero-sub">This page explains how on-chain forensics actually works, what a professional intelligence report contains, and what UK police can and cannot realistically do with blockchain data after a crypto fraud. It does not provide legal advice, financial advice, or a guarantee of any outcome.</p>
+        <div class="guide-cta-row">
+          <a href="#what-is-tracing" class="btn-primary">Read the tracing explainer</a>
+          <a href="../contact-us.html" class="btn-secondary">Request a free 15-minute case review</a>
+        </div>
+        <p class="byline">Published 25 April 2026 &middot; Updated 25 April 2026 &middot; by <strong>Liam Bennett</strong>, Lead Analyst &middot; CountWize Ltd</p>
+      </header>
+
+      <!-- 3. FULL FCA DISCLAIMER BLOCK -->
+      <div class="fca-notice-inline" role="note">
+        <p><strong>CountWize Ltd is not FCA-authorised.</strong> This website provides educational content and on-chain tracing services only. We do not provide financial advice, legal advice, or a guarantee of asset recovery. Recovery outcomes depend on the specific circumstances of each case. If you have been a victim of fraud, report to <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer">actionfraud.police.uk</a>. Check the regulatory status of any firm at <a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener noreferrer">fca.org.uk/scamsmart</a>.</p>
+      </div>
+
+      <!-- 4. TABLE OF CONTENTS -->
+      <nav class="toc-box" aria-label="Page contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#what-is-tracing">What on-chain tracing actually is</a></li>
+          <li><a href="#how-blockchains-work">How public blockchain ledgers work</a></li>
+          <li><a href="#the-process">The tracing process: clustering, subpoenas, OSINT</a></li>
+          <li><a href="#intelligence-report">What an intelligence report contains</a></li>
+          <li><a href="#police-can-cannot">What UK police can and cannot do</a></li>
+          <li><a href="#realistic-outcomes">Realistic outcomes: what to expect</a></li>
+          <li><a href="#faqs">Frequently asked questions</a></li>
+        </ol>
+      </nav>
+
+      <!-- 5. BODY CONTENT -->
+      <div class="guide-body">
+
+        <!-- Section 1: What on-chain tracing is -->
+        <section id="what-is-tracing">
+          <h2>What on-chain tracing actually is</h2>
+
+          <p>On-chain tracing — also referred to as blockchain forensics or blockchain analytics — is the discipline of analysing the publicly recorded transaction history of a cryptocurrency blockchain to follow the movement of funds between wallet addresses. It is neither a magic reversal of your transaction nor a guarantee of any outcome. It is, at its core, a forensic evidence-gathering exercise: building a documented picture of where your cryptocurrency went after it left your wallet.</p>
+
+          <p>The term is sometimes used loosely to mean anything from a quick block explorer search to a full professional investigation using commercial analytics software. For practical purposes, this guide focuses on professional on-chain tracing as conducted by specialist firms — the kind that produces a written intelligence report suitable for submission to law enforcement, use in civil proceedings, or submission alongside a Norwich Pharmacal Order (NPO) application to a UK court.</p>
+
+          <p>On-chain tracing is not regulated by the FCA. A firm providing this service does not need to be FCA-authorised, because it is an investigative and educational activity rather than a financial service. However, the quality, methodology, and evidential rigour of the output varies enormously between providers. Before engaging any firm, it is worth understanding exactly what the process involves — which is what the rest of this guide covers.</p>
+
+          <div class="callout-box">
+            <strong>Related guide:</strong> If you have recently been defrauded and want to know what to do in the first 24 hours, read our companion guide: <a href="crypto-scam-first-24-hours.html">Crypto scam: what to do in the first 24 hours (UK)</a>.
+          </div>
+        </section>
+
+        <!-- Section 2: How blockchains work -->
+        <section id="how-blockchains-work">
+          <h2>How public blockchain ledgers work</h2>
+
+          <p>To understand why on-chain tracing is possible at all, it helps to understand how public blockchains record transactions. The Bitcoin blockchain, the Ethereum blockchain, and the vast majority of other major cryptocurrency networks operate as distributed public ledgers. Every transaction ever made on these networks is recorded permanently, in chronological order, and is readable by anyone in the world with a browser and an internet connection.</p>
+
+          <h3>Wallet addresses are pseudonymous, not anonymous</h3>
+          <p>A common misconception is that cryptocurrency transactions are anonymous. They are not — they are pseudonymous. A wallet address is a string of letters and numbers that functions somewhat like a bank account number: it identifies where funds are held, but does not, on its own, reveal the identity of the person controlling it. However, every transaction to and from that address is publicly visible, permanently recorded, and immutable.</p>
+
+          <p>The pseudonymity of a wallet address can be broken in several ways. If the address has ever been used on a regulated exchange that requires identity verification (KYC — Know Your Customer), the exchange holds a record linking that address to a real-world identity. If the address has been publicly associated with a named individual or organisation — for example, through a forum post, a social media account, or a public donation — that association is also traceable. Blockchain analytics firms maintain large databases of known addresses, including addresses associated with exchanges, ransomware groups, sanctioned entities, and known fraud clusters.</p>
+
+          <h3>Transaction IDs and the permanent record</h3>
+          <p>Every on-chain transaction is identified by a unique transaction ID (txID or hash) — a string of letters and numbers that can be entered into any block explorer (such as Blockchain.com for Bitcoin, or Etherscan for Ethereum) to see the full details of that transaction: the sending address, the receiving address, the amount, the timestamp, and the current confirmation status. This public record is the raw material of every on-chain tracing exercise.</p>
+
+          <p>Importantly, this record is permanent. Unlike a bank's internal transaction logs, which are controlled by the bank and could theoretically be deleted or altered, blockchain transaction records cannot be removed or changed once confirmed. This makes blockchain data particularly valuable as forensic evidence: the record of where your funds went does not disappear, even if the fraudster destroys their devices or closes their accounts.</p>
+
+          <h3>Why some chains are harder to trace than others</h3>
+          <p>Not all blockchains are equally transparent. Privacy-focused cryptocurrencies such as Monero (XMR) use cryptographic techniques that deliberately obscure transaction amounts and addresses, making tracing substantially more difficult. Zcash (ZEC) offers optional privacy features. In contrast, Bitcoin and Ethereum — which account for the large majority of fraud cases — are fully transparent, and tracing on these networks is well-established.</p>
+
+          <p>Additionally, some fraudsters use "mixers" or "tumblers" — services that pool cryptocurrency from multiple sources and redistribute it to obscure the transaction trail. The UK government added certain mixing services to its sanctions list in 2023. While mixers complicate tracing, they do not make it impossible: patterns in timing, amounts, and subsequent transaction behaviour often allow analysts to re-establish a probable connection between funds entering and leaving a mixer.</p>
+        </section>
+
+        <!-- Section 3: The tracing process -->
+        <section id="the-process">
+          <h2>The tracing process: clustering, exchange subpoenas, OSINT</h2>
+
+          <p>A professional on-chain tracing exercise typically proceeds through several stages. The exact methodology varies between firms and depends on the specifics of the case, but the following represents the standard approach used by reputable blockchain analytics providers.</p>
+
+          <ol class="process-steps">
+            <li>
+              <strong>Transaction mapping from the point of loss.</strong> Starting from the transaction ID provided by the victim, the analyst follows the funds through the blockchain. Each hop — each transfer from one address to another — is documented. Automated analytics software is typically used to trace funds across hundreds of hops rapidly, but human review is needed to interpret the results and identify significant waypoints.
+            </li>
+            <li>
+              <strong>Address clustering analysis.</strong> The analyst applies clustering algorithms to identify groups of wallet addresses that are likely controlled by the same individual or entity. Because many wallets generate a new address for each transaction, a single fraudster may control hundreds of addresses. Clustering uses patterns in transaction inputs, change address behaviour, and timing to group addresses that share a probable common controller — giving a more complete picture of how the fraudster manages their funds.
+            </li>
+            <li>
+              <strong>Exchange identification.</strong> A critical output of any tracing exercise is identifying whether and where funds reached a regulated centralised exchange. Commercial analytics platforms maintain large datasets of known exchange deposit addresses. When traced funds arrive at a known exchange deposit address, that is a significant finding: the exchange holds KYC identity records for the account that received the funds, and those records can be obtained via a law enforcement request or a civil court order.
+            </li>
+            <li>
+              <strong>OSINT (Open Source Intelligence) enrichment.</strong> Alongside the on-chain data, analysts typically conduct open source intelligence research — reviewing social media profiles, forum posts, website registrations, and public domain records — to attempt to link wallet addresses or exchange accounts to real-world identities or known fraud groups. OSINT findings are included in the intelligence report as supporting context, clearly distinguished from on-chain evidence.
+            </li>
+            <li>
+              <strong>Report preparation.</strong> The findings are compiled into a structured intelligence report documenting the transaction history, address clusters, exchange attribution, and OSINT findings. The report is written to a standard suitable for submission to UK law enforcement or use in civil proceedings, with appropriate caveats about the limits of the analysis and the distinction between evidence and conclusions.
+            </li>
+          </ol>
+
+          <p>The entire process, for a straightforward case involving one or two transaction hops on a major chain, typically takes between three and ten working days. Complex cases — involving multiple chains, privacy coin conversions, mixer usage, or dozens of intermediary hops — take longer. CountWize provides a scope estimate and timeframe before any work begins.</p>
+        </section>
+
+        <!-- Section 4: Intelligence report -->
+        <section id="intelligence-report">
+          <h2>What an intelligence report contains</h2>
+
+          <p>Understanding what a professional on-chain intelligence report actually contains — and what it does not contain — helps victims make informed decisions about whether to commission one and what to do with the output.</p>
+
+          <h3>Standard sections of a professional report</h3>
+          <p>A well-structured on-chain intelligence report will typically include the following sections:</p>
+
+          <ul>
+            <li><strong>Case summary.</strong> A brief description of the fraud scenario, the transaction(s) being investigated, and the scope of the analysis.</li>
+            <li><strong>Transaction history.</strong> A chronological, address-by-address record of how the funds moved from the victim's wallet through each subsequent hop. This section will typically include the transaction IDs, timestamps, amounts, and current holding addresses for each step.</li>
+            <li><strong>Address cluster analysis.</strong> An assessment of which wallet addresses appear to be controlled by the same actor, with the methodology and confidence level clearly stated.</li>
+            <li><strong>Exchange attribution.</strong> Where funds can be attributed to a known centralised exchange deposit address, the exchange is identified. The report will state that the exchange holds KYC records for the relevant account and that those records are obtainable via the appropriate legal process.</li>
+            <li><strong>Current fund status.</strong> An assessment of where the funds currently appear to reside — still in a holding wallet, dispersed further, converted to a different cryptocurrency, or potentially moved to fiat currency.</li>
+            <li><strong>OSINT findings.</strong> Any relevant open source intelligence findings linking addresses, accounts, or transaction patterns to known fraud operations, public domain identities, or previously documented fraud clusters.</li>
+            <li><strong>Limitations and caveats.</strong> A clear statement of what the analysis cannot establish — including the inherent limits of pseudonymous blockchain data and the distinction between tracing evidence and identification of a person.</li>
+            <li><strong>Recommendations.</strong> Practical guidance on next steps — typically, submission to Action Fraud alongside the crime reference number, referral to a solicitor for NPO proceedings, or both.</li>
+          </ul>
+
+          <h3>What a report is — and what it is not</h3>
+          <p>An on-chain intelligence report is evidence. It documents, in a structured and defensible way, where your cryptocurrency went after it left your wallet. It is not a remedy, a recovery mechanism, or a legal proceeding. It does not compel any exchange to freeze or return funds. It does not identify the fraudster by name. It is the first step in a process that may — depending on many factors outside any tracing firm's control — lead to further action by law enforcement, a civil court, or a regulated exchange.</p>
+
+          <p>The analogy is instructive: a forensic accountant's report in a fraud case documents where money went. It is then for investigators, lawyers, and courts to decide what to do with that information. An on-chain intelligence report serves the same function in a blockchain fraud case.</p>
+        </section>
+
+        <!-- Section 5: What UK police can and cannot do -->
+        <section id="police-can-cannot">
+          <h2>What UK police can and cannot do</h2>
+
+          <p>One of the most common questions we receive is: "Can the police trace bitcoin?" The honest answer is: yes, they can — and in some cases, they do. But there are significant constraints on what police can practically achieve with blockchain tracing evidence, and it is important for victims to have realistic expectations before filing a report.</p>
+
+          <h3>What UK law enforcement can do</h3>
+          <p>UK law enforcement agencies — including the National Crime Agency (NCA), the Metropolitan Police Cyber Crime Unit, and regional Economic Crime Units — have access to commercial blockchain analytics platforms used by private tracing firms. They can and do trace cryptocurrency transactions as part of criminal investigations. The NCA's National Economic Crime Centre (NECC) coordinates multi-agency responses to significant crypto fraud cases.</p>
+
+          <p>Where tracing identifies funds held at a UK-regulated exchange, police can obtain a production order from a UK court compelling the exchange to disclose account holder identity details. Where funds are held at an overseas exchange, mutual legal assistance treaty (MLAT) requests can be made, though these processes are slower and less certain in outcome. UK courts have granted interim freezing injunctions over cryptocurrency accounts in a number of cases, including against overseas defendants.</p>
+
+          <p>The Metropolitan Police cryptocurrency seizure programme — which seized over £5 billion in cryptocurrency in 2023 and 2024 — demonstrates that large-scale blockchain tracing operations are operationally possible and have produced significant results at the organised crime level.</p>
+
+          <h3>What UK law enforcement cannot realistically do for most individual cases</h3>
+          <p>The limitation is not capability — it is resource prioritisation. The City of London Police's Action Fraud reporting centre processes hundreds of thousands of reports per year. The National Fraud Intelligence Bureau (NFIB) assesses each report against a triage model that weighs financial scale, available intelligence, actionability, and public interest. The vast majority of individual consumer crypto fraud reports — particularly those involving relatively smaller amounts, overseas fraudsters with no UK nexus, and privacy coin or mixer usage — do not result in a dedicated police tracing exercise for that specific case.</p>
+
+          <p>This resource constraint is not a criticism of UK policing — it reflects the sheer volume of crypto fraud at the consumer level and the finite resources available. It is, however, a reason why some victims seek a private on-chain intelligence report: to provide law enforcement with ready-made tracing evidence rather than requiring police to conduct the analysis themselves, which may improve the likelihood of the report being acted upon.</p>
+
+          <h3>The role of a private intelligence report in a police investigation</h3>
+          <p>A well-prepared on-chain intelligence report can be submitted alongside an Action Fraud report as supporting evidence. The NFIB and specialist policing units receive intelligence from private firms regularly — it is a recognised part of the crypto fraud investigation ecosystem. The report does not guarantee police action, but it increases the intelligence value of the report and may help prioritise cases that would otherwise receive limited attention.</p>
+
+          <div class="callout-box">
+            <strong>Related reading:</strong> For a detailed exploration of what UK police can and cannot do with blockchain evidence, see our upcoming guide: <a href="can-police-trace-crypto.html">Can police trace bitcoin transactions in the UK?</a>
+          </div>
+        </section>
+
+        <!-- Section 6: Realistic outcomes -->
+        <section id="realistic-outcomes">
+          <h2>Realistic outcomes: what to expect</h2>
+
+          <p>Any firm or individual that guarantees you will recover your cryptocurrency should be treated with extreme caution. Recovery of cryptocurrency following a fraud is possible — it happens — but it is not certain, not common for smaller cases, and depends on a chain of circumstances that no tracing firm can control. Here is an honest breakdown of the realistic outcome scenarios.</p>
+
+          <h3>Scenario A: funds traced to a regulated exchange</h3>
+          <p>This is the most favourable scenario for victims. If on-chain tracing identifies that your funds arrived at a regulated, KYC-compliant exchange — particularly a UK-regulated or EU-regulated exchange — then there is a legal mechanism to obtain the identity of the account holder. This can be done via a UK Norwich Pharmacal Order (NPO) application, which compels the exchange to disclose account details to a victim seeking to identify a fraudster. NPO applications require legal representation and involve costs; they are generally most economical for losses above approximately £10,000.</p>
+
+          <p>Even in this best-case scenario, identifying the account holder does not mean recovery is automatic. The fraudster may have withdrawn funds to fiat currency already. The account may be held in the name of a money mule who is difficult to pursue. Overseas litigation may be required. But having the exchange attribution provides a legally actionable intelligence lead that simply does not exist without the tracing exercise.</p>
+
+          <h3>Scenario B: funds traced to a self-custody wallet with no exchange link</h3>
+          <p>If funds remain in a self-custody wallet — a wallet not associated with any regulated exchange or known entity — tracing documents the current location of the funds but does not provide a legal mechanism to identify the wallet holder. The intelligence report remains valuable as evidence of the transaction chain and for law enforcement purposes, but there is no civil legal process that can compel a self-custody wallet to be disclosed without identifying the holder through other means.</p>
+
+          <h3>Scenario C: funds dispersed through mixers or converted to privacy coins</h3>
+          <p>This is the most challenging scenario. If funds were passed through a mixer or converted to a privacy coin such as Monero, the on-chain trail becomes substantially harder to follow. Tracing can still document the funds to the point they entered the obfuscation mechanism, and OSINT may provide supplementary intelligence, but the prospects of exchange attribution or further legal action are reduced. An honest tracing firm will tell you this upfront after reviewing the initial transaction data.</p>
+
+          <h3>No outcome guarantees — and why that matters</h3>
+          <p>CountWize does not guarantee any recovery outcome. We provide on-chain tracing as an investigative and educational service. Whether the intelligence we produce leads to recovery action depends on factors entirely outside our control: the destination exchange's jurisdiction and cooperation practices, whether law enforcement prioritises the case, whether the fraudster's identity can be established, and whether any assets remain available to be recovered. We will tell you honestly what we find, what it means, and what the realistic next steps are.</p>
+
+          <p style="margin-top:24px;font-size:0.85rem;color:#7070a0;"><em>Sources: <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer">Action Fraud UK</a>; <a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener noreferrer">FCA ScamSmart</a>; <a href="https://www.gov.uk/government/organisations/national-crime-agency" target="_blank" rel="noopener noreferrer">National Crime Agency, gov.uk</a>; <a href="https://www.gov.uk/government/publications/payment-systems-regulator-app-scams-reimbursement" target="_blank" rel="noopener noreferrer">Payment Systems Regulator APP reimbursement guidance, gov.uk</a></em></p>
+        </section>
+
+        <!-- FAQs -->
+        <section id="faqs">
+          <h2>Frequently asked questions</h2>
+
+          <div class="faq-item">
+            <h3>What is blockchain forensics?</h3>
+            <p>Blockchain forensics — also called on-chain tracing or blockchain analytics — is the discipline of analysing publicly recorded cryptocurrency transaction data to follow the movement of funds between wallet addresses. Because most major blockchains record every transaction permanently and publicly, a trained analyst can trace funds from the point of loss through subsequent wallets, identify destination exchanges, and produce an intelligence report documenting the movement of the cryptocurrency.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Can the police trace bitcoin transactions in the UK?</h3>
+            <p>Yes, UK law enforcement uses commercial blockchain analytics platforms to trace bitcoin and other cryptocurrency. The National Crime Agency, Metropolitan Police, and specialist Economic Crime Units have conducted successful tracing operations. However, police resources are finite and most individual consumer fraud reports do not result in a dedicated police tracing exercise. A private intelligence report submitted alongside an Action Fraud report can help by providing ready-made tracing evidence.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>What does an on-chain intelligence report contain?</h3>
+            <p>A professional report documents: the transaction history from your wallet through each subsequent address; address clustering analysis showing which wallets appear to be controlled by the same actor; whether funds reached a known exchange (and if so, which one); the current status of the funds; any OSINT findings; and recommendations on next steps. It is evidence for use in legal proceedings — not a recovery mechanism in itself.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How long does on-chain tracing take?</h3>
+            <p>A straightforward tracing exercise typically takes between three and ten working days. Complex cases involving multiple blockchains, mixers, or many intermediary hops take longer. CountWize provides an honest scope and timeframe estimate before any work begins and does not proceed without your agreement.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Does CountWize guarantee recovery of cryptocurrency?</h3>
+            <p>No. CountWize Ltd does not guarantee recovery of any cryptocurrency. We provide on-chain tracing as an investigative and educational service. Whether intelligence leads to recovery depends on factors outside our control — destination exchange jurisdiction, law enforcement prioritisation, and whether assets remain available. Any firm that guarantees recovery should be checked on the <a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener noreferrer">FCA ScamSmart warning list</a>.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>What is address clustering in blockchain analysis?</h3>
+            <p>Address clustering identifies groups of wallet addresses likely controlled by the same individual or organisation. Because wallets often generate a new address per transaction, a single fraudster may control hundreds of addresses. Clustering algorithms use patterns in transaction inputs, timing, and spending behaviour to group addresses that share a probable common controller, giving a fuller picture of how funds have moved.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Is CountWize FCA-authorised?</h3>
+            <p>No. CountWize Ltd is not authorised or regulated by the Financial Conduct Authority. We provide educational content and on-chain tracing services only. We do not provide financial advice, legal advice, or a guarantee of asset recovery. You can verify the regulatory status of any firm at <a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener noreferrer">fca.org.uk/scamsmart</a>.</p>
+          </div>
+
+        </section>
+
+      </div><!-- /.guide-body -->
+
+      <!-- 6. "WE WILL NEVER ASK FOR..." BOX -->
+      <div class="safety-box" role="note">
+        <strong>We will never ask for:</strong> your seed phrase, private key, exchange password, two-factor codes, remote access to your computer, or cryptocurrency payment to begin work. Any message claiming to be from CountWize and asking for these is a scam. Report it to us on the number above and to <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer">actionfraud.police.uk</a>.
+      </div>
+
+      <!-- 7. "WHO WE CANNOT HELP" PANEL -->
+      <div class="limits-panel" role="note">
+        <h3>Who we cannot help</h3>
+        <ul>
+          <li>If you have already paid a fraudulent "recovery" service — this does not exclude you from a case review, but it complicates the evidence trail.</li>
+          <li>If the transaction is older than 5 years — the on-chain trail may still exist, but practically, the prospects of any further action are substantially reduced.</li>
+          <li>If the counterparty is an unidentified peer-to-peer wallet with no link to any exchange — tracing can document the transaction but cannot identify the holder without a further legal process.</li>
+          <li>We cannot guarantee that tracing results will lead to recovery — we provide intelligence, not outcomes.</li>
+          <li>We do not act as a solicitor, authorised claims management company (CMC), or financial adviser. For legal action, you will need separate legal representation.</li>
+        </ul>
+        <p style="margin:12px 0 0;font-size:0.85rem;"><a href="../our-limits.html">Read our full honest-limits statement</a></p>
+      </div>
+
+      <!-- 8. NAMED CASE-HANDLER CARD -->
+      <div class="case-handler-card">
+        <div class="case-handler-photo" role="img" aria-label="Liam Bennett, Lead Analyst">
+          Liam Bennett<br>Lead Analyst
+        </div>
+        <div class="case-handler-info">
+          <div class="case-handler-name">Liam Bennett</div>
+          <div class="case-handler-role">Lead Analyst &middot; On-Chain Forensics &middot; CountWize Ltd</div>
+          <p class="case-handler-bio">Liam manages CountWize's compliance obligations and oversees the integrity of each tracing output before it is issued to a client; he is the team's lead contact for regulatory questions and ensures every intelligence report meets the evidentiary standards expected by UK law enforcement and civil courts.</p>
+          <a href="https://www.linkedin.com/in/liam-bennett-countwize" target="_blank" rel="noopener noreferrer" class="case-handler-linkedin">LinkedIn profile (placeholder)</a>
+        </div>
+      </div>
+
+      <!-- 9. CTA BAND -->
+      <div class="cta-band">
+        <h2>Not sure if CountWize can help your situation?</h2>
+        <p>Request a free 15-minute case review — no obligation, no upfront fee.</p>
+        <a href="../contact-us.html" class="btn-cta">Request a free case review</a>
+      </div>
+
+      <!-- 10. EXTERNAL RESOURCES -->
+      <div class="ext-resources">
+        <h2>Useful external resources</h2>
+        <ul>
+          <li><a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer">Action Fraud — UK national fraud and cybercrime reporting centre (actionfraud.police.uk)</a></li>
+          <li><a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener noreferrer">FCA ScamSmart — check and report investment scams (fca.org.uk/scamsmart)</a></li>
+          <li><a href="https://www.citizensadvice.org.uk" target="_blank" rel="noopener noreferrer">Citizens Advice — free independent advice on consumer and fraud issues (citizensadvice.org.uk)</a></li>
+        </ul>
+      </div>
+
+    </article>
+
+    <!-- 11. FOOTER -->
+    <footer class="footer-section">
+      <div class="footer-wrapper">
+        <div class="footer-top-wrapper">
+          <div class="footer-logo-wrapper"><img src="../images/clip-path-group.svg" loading="lazy" alt="Logo" class="footer-logo"></div>
+          <div class="footer-navigation-wrapper">
+            <a href="../index.html" class="footer-nav-link">Home</a>
+            <a href="../about-us.html" class="footer-nav-link">About</a>
+            <a href="../crypto-recovery.html" class="footer-nav-link">Crypto Recovery</a>
+            <a href="../crypto-education.html" class="footer-nav-link">Education</a>
+            <a href="../faq-crypto-recovery.html" class="footer-nav-link">FAQ</a>
+            <a href="../blog.html" class="footer-nav-link">Blog</a>
+            <a href="../crypto-education.html" class="footer-nav-link">News</a>
+          </div>
+        </div>
+        <div class="div-block-195">
+          <div class="footer-contacts-wrapper">
+            <div class="footer-title-wrapper">
+              <div class="footer-title gradient-text">Contact us</div>
+            </div>
+            <div class="footer-contact-groups-wrapper">
+              <div class="footer-contact-group">
+                <div class="div-block-194">
+                  <div class="footer-item">
+                    <div class="footer-label">UK</div>
+                    <a href="tel:+447533598854" class="footer-contact-link">+44 7533 598854</a>
+                  </div>
+                </div>
+                <div class="footer-item">
+                  <div class="footer-label">Email</div>
+                  <a href="mailto:support@countwize.co" class="footer-contact-link">support@countwize.co</a>
+                </div>
+                <div class="footer-item">
+                  <div class="footer-label">Location</div>
+                  <div class="footer-contact-link">UNIT 13 FREELAND PARK WAREHAM ROAD<br>LYTCHETT MATRAVERS POOLE ENGLAND BH16 6FA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-hours-wrapper">
+            <div class="footer-contacts-wrapper">
+              <div class="footer-hours-groups-wrapper">
+                <div class="footer-hours-days-wrapper">
+                  <div class="footer-title gradient-text">Office Hours</div>
+                  <div class="footer-hours-day-group">
+                    <div class="footer-item">
+                      <div class="footer-label">Mon, Wed</div>
+                      <div class="footer-contact-link">08:00-17:00</div>
+                    </div>
+                    <div class="footer-item">
+                      <div class="footer-label">Tue, Thu</div>
+                      <div class="footer-contact-link">10:00-19:00</div>
+                    </div>
+                    <div class="footer-item">
+                      <div class="footer-label">Fri</div>
+                      <div class="footer-contact-link">08:00 - 12:00</div>
+                    </div>
+                    <div class="footer-item">
+                      <div class="footer-label">Sat, Sun</div>
+                      <div class="footer-contact-link">Closed</div>
+                    </div>
+                  </div>
+                  <div class="footer-social-wrapper">
+                    <div class="social-icons">
+                      <a href="https://www.instagram.com/countwize_" target="_blank" rel="noopener noreferrer" class="social-link w-inline-block"><img src="../images/instagram-3.svg" loading="lazy" alt="instagram"></a>
+                      <a href="https://www.linkedin.com/company/countwize" target="_blank" rel="noopener noreferrer" class="social-link w-inline-block"><img src="../images/vector-1.svg" loading="lazy" alt="linkedin"></a>
+                      <a href="https://www.facebook.com/profile.php?id=61572760483669" target="_blank" rel="noopener noreferrer" class="social-link w-inline-block"><img src="../images/vector.svg" loading="lazy" alt="facebook"></a>
+                    </div>
+                  </div>
+                  <div class="footer-certificates-wrapper">
+                    <a href="/certs/iso-27001-2022.pdf" target="_blank" rel="noopener noreferrer" class="footer-certificate-item w-inline-block"><img src="../images/aa29f00df770d0d403ca5e9c8237b8b5856c006b.webp" loading="lazy" width="66" height="66" alt="Certificate ISO" class="footer-certificate-image">
+                      <div class="footer-certificate-text">Certificate ISO</div>
+                    </a>
+                    <a href="https://trademarks.ipo.gov.uk/ipo-tmcase/page/Results/1/UK00004151560" target="_blank" rel="noopener noreferrer" class="footer-certificate-item w-inline-block"><img src="../images/941ab0070c54e830e3f44ffc2fd08e1ca2cf1287.webp" loading="lazy" width="66" height="66" alt="Certificate TradeMark" class="footer-certificate-image">
+                      <div class="footer-certificate-text">Certificate TradeMark</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.wrapper-page -->
+
+  <div class="copyright-legal-wrapper">
+    <div class="copyright-text-wrapper" style="max-width:900px;margin:0 auto;text-align:center;padding:24px 16px 12px;">
+      <div class="copyright-text" style="margin-bottom:8px;">&copy; 2026 <a href="../index.html" class="copyright-link">CountWize</a> | <a href="https://find-and-update.company-information.service.gov.uk/company/16198508" target="_blank" rel="noopener noreferrer" class="copyright-link">Co. 16198508</a> | Registered in England and Wales</div>
+      <div style="font-size:12px;color:#999;line-height:1.5;margin-bottom:8px;">CountWize Ltd is not FCA-authorised. We provide educational content and on-chain tracing services only. No guarantee of recovery.</div>
+      <div style="font-size:12px;color:#999;line-height:1.5;margin-bottom:8px;">UNIT 13 FREELAND PARK WAREHAM ROAD, LYTCHETT MATRAVERS, POOLE, ENGLAND BH16 6FA<br>Phone: <a href="tel:+447533598854" style="color:#07B96A;">+44 7533 598854</a> | Email: <a href="mailto:support@countwize.co" style="color:#07B96A;">support@countwize.co</a></div>
+      <div style="font-size:12px;margin-bottom:0;">
+        <a href="../privacy-policy.html" class="copyright-link" style="margin-right:12px;">Privacy Policy</a>
+        <a href="../cookie-policy.html" class="copyright-link" style="margin-right:12px;">Cookie Policy</a>
+        <a href="../terms.html" class="copyright-link" style="margin-right:12px;">Terms of Service</a>
+        <a href="../complaints.html" class="copyright-link">Complaints</a>
+      </div>
+      <div style="font-size:12px;color:#999;line-height:1.5;margin-top:8px;">To verify you are speaking to CountWize: always call the number published at <a href="../contact-us.html" style="color:#07B96A;">countwize.co/contact-us.html</a>.</div>
+      <div style="font-size:12px;color:#999;line-height:1.5;margin-top:4px;">Report fraud: <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer" style="color:#07B96A;">Action Fraud</a> &middot; <a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener noreferrer" style="color:#07B96A;">FCA ScamSmart</a></div>
+    </div>
+  </div>
+
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6757da2d0bddf4e7ffe6a430" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="../js/webflow.js" type="text/javascript"></script>
+  <!-- Start of LiveChat (www.livechat.com) code -->
+  <script>
+    try {
+      window.__lc = window.__lc || {};
+      window.__lc.license = 18977943;
+      window.__lc.integration_name = "manual_channels";
+      window.__lc.product_name = "livechat";
+      (function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice));
+    } catch (e) {
+      console.warn('LiveChat initialization failed:', e.message);
+    }
+  </script>
+  <noscript>
+    <a href="https://www.livechat.com/chat-with/18977943/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a>
+  </noscript>
+
+  <script src="/js/meta-pixel.js"></script>
+</body>
+</html>

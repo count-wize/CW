@@ -1,0 +1,27 @@
+(function() {
+  function initPixel() {
+    if (typeof fbq === 'undefined') {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    }
+    fbq('init', '2353753348435760');
+    fbq('track', 'PageView');
+  }
+
+  // For returning visitors: fires when Cookiebot loads and consent is already known
+  window.addEventListener('CookiebotOnLoad', function() {
+    if (window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.marketing) {
+      initPixel();
+    }
+  });
+
+  // For new visitors: fires when user accepts consent on banner
+  window.addEventListener('CookiebotOnAccept', function() {
+    if (window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.marketing) {
+      initPixel();
+    }
+  });
+})();

@@ -21,6 +21,7 @@
     cp -r js site/ && \
     cp -r images site/ && \
     cp -r documents site/ && \
+    cp -r certs site/ && \
     cp -r blog site/
   """
 
@@ -57,7 +58,9 @@
         https://f.vimeocdn.com
         https://player.vimeo.com
         https://www.gstatic.com
-        https://connect.facebook.net;
+        https://connect.facebook.net
+        https://consent.cookiebot.com
+        https://consentcdn.cookiebot.com;
       style-src 'self' 'unsafe-inline'
         https://fonts.googleapis.com
         https://cdnjs.cloudflare.com
@@ -68,7 +71,8 @@
         https://i.vimeocdn.com
         https://vimeocdn.com
         https://cdn.prod.website-files.com
-        https://www.facebook.com;
+        https://www.facebook.com
+        https://imgsct.cookiebot.com;
       media-src 'self'
         https://player.vimeo.com
         https://vimeo.com
@@ -77,7 +81,8 @@
       frame-src 'self'
         https://player.vimeo.com
         https://vimeo.com
-        https://www.googletagmanager.com;
+        https://www.googletagmanager.com
+        https://consent.cookiebot.com;
       connect-src 'self'
         https://www.google-analytics.com
         https://analytics.google.com
@@ -85,7 +90,6 @@
         https://pagead2.googlesyndication.com
         https://stats.g.doubleclick.net
         https://ipapi.co
-        https://countwiseapi.space
         https://countriesnow.space
         https://restcountries.com
         https://api.telegram.org
@@ -95,10 +99,12 @@
         https://collector.vimeocdn.com
         https://unpkg.com
         https://www.facebook.com
-        https://connect.facebook.net;
+        https://connect.facebook.net
+        https://consent.cookiebot.com
+        https://consentcdn.cookiebot.com;
       frame-ancestors 'self';
       base-uri 'self';
-      form-action 'self' https://countwiseapi.space;
+      form-action 'self';
     """
     
     # Phase 284: Prevent clickjacking
@@ -139,6 +145,11 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
+  for = "/certs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # ===========================================
 # Redirects
 # ===========================================
@@ -149,12 +160,6 @@
   to = "https://countwize.co/:splat"
   status = 301
   force = true
-
-# Clean URL for crypto recovery
-[[redirects]]
-  from = "/crypto-recovery"
-  to = "/recovery.html"
-  status = 200
 
 # Blog redirects (for SEO preservation)
 [[redirects]]
@@ -170,6 +175,12 @@
 [[redirects]]
   from = "/how-does-a-crypto-recovery-phrase-work.html"
   to = "/blog/how-does-a-crypto-recovery-phrase-work.html"
+  status = 301
+
+# Retired pages
+[[redirects]]
+  from = "/team.html"
+  to = "/about-us.html"
   status = 301
 
 # Legacy page redirects
@@ -213,6 +224,64 @@
   from = "/success.php"
   to = "/success.html"
   status = 301
+
+# Retired pages — P0.5
+[[redirects]]
+  from = "/crypto-tax.html"
+  to = "/crypto-education.html"
+  status = 301
+  force = true
+
+# Retired pages — P1.1
+[[redirects]]
+  from = "/recovery.html"
+  to = "/crypto-recovery.html"
+  status = 301
+  force = true
+
+# Retired pages — P5.5
+[[redirects]]
+  from = "/crypto-insights.html"
+  to = "/crypto-education.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news.html"
+  to = "/blog.html"
+  status = 301
+  force = true
+
+# Deleted-page redirects (P9.4)
+[[redirects]]
+  from = "/recovery"
+  to = "/on-chain-tracing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/team"
+  to = "/about-us"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/team.html"
+  to = "/about-us"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/crypto-tax"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/crypto-tax.html"
+  to = "/"
+  status = 301
+  force = true
 
 # 404 fallback
 [[redirects]]

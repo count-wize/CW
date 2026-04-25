@@ -3642,14 +3642,6 @@ blockquote {
   position: relative;
 }
 
-.investment-field, .specialist-field {
-  grid-column-gap: .75rem;
-  grid-row-gap: .75rem;
-  flex-flow: column;
-  display: none;
-  position: relative;
-}
-
 .country-field, .town-field, .message-field {
   grid-column-gap: .75rem;
   grid-row-gap: .75rem;
@@ -7019,6 +7011,7 @@ blockquote {
   font-weight: 500;
   text-decoration: none;
   transition: color .2s, background-color .2s;
+  white-space: nowrap;
 }
 
 .navbar-contact-button:hover {
@@ -7057,6 +7050,7 @@ blockquote {
   margin-right: 0;
   padding: 0;
   line-height: 130%;
+  white-space: nowrap;
 }
 
 .navbar-link:hover {
@@ -7121,18 +7115,19 @@ blockquote {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 40px;
+  height: auto;
+  min-height: 40px;
+  padding: 16px 0;
   display: flex;
 }
 
 .copyright-text-wrapper {
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
-  max-width: 1440px;
-  padding-left: 120px;
-  padding-right: 120px;
-  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: block;
+  text-align: center;
 }
 
 .copyright-link-legal-page {
@@ -7367,8 +7362,8 @@ blockquote {
   margin-top: 0;
   margin-bottom: 0;
   font-family: Poppins, sans-serif;
-  font-size: 50px;
-  font-weight: 500;
+  font-size: 40px;
+  font-weight: 600;
   line-height: 110%;
 }
 
@@ -8143,8 +8138,8 @@ blockquote {
   grid-column-gap: 15px;
   grid-row-gap: 15px;
   flex-flow: column;
-  justify-content: space-between;
-  height: 100%;
+  justify-content: flex-start;
+  height: auto;
   display: flex;
 }
 
@@ -8318,8 +8313,8 @@ blockquote {
 }
 
 .source-logo-new {
-  object-fit: cover;
-  border-radius: 40px;
+  object-fit: contain;
+  border-radius: 6px;
   min-width: 48px;
   max-width: 48px;
   min-height: 48px;
@@ -8612,6 +8607,7 @@ blockquote {
   align-items: center;
   display: flex;
   position: relative;
+  align-self: stretch;
 }
 
 .hero-button-wrapper {
@@ -8620,21 +8616,41 @@ blockquote {
   border-radius: 50px;
   justify-content: center;
   align-items: center;
+  align-self: flex-end;
   width: 340px;
   height: 60px;
   padding: 12px 30px;
   font-size: 17px;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color .4s, color .4s;
+  transition: color .4s ease;
   display: flex;
-  position: static;
-  inset: auto -360px 10px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-button-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background-image: linear-gradient(90deg, var(--_redesign-style---green), var(--_redesign-style---green-light) 50%, var(--_redesign-style---green));
+  opacity: 0;
+  transition: opacity .4s ease;
+  z-index: 0;
+}
+
+.hero-button-wrapper:hover::before {
+  opacity: 1;
 }
 
 .hero-button-wrapper:hover {
-  background-image: linear-gradient(90deg, var(--_redesign-style---green), var(--_redesign-style---green-light) 50%, var(--_redesign-style---green));
   color: var(--_redesign-style---black-green);
+}
+
+.hero-button-wrapper > * {
+  position: relative;
+  z-index: 1;
 }
 
 .supported-and-recovery-wrapper {
@@ -9418,6 +9434,27 @@ blockquote {
 .lessons-nav-btn:disabled {
   opacity: 0.3;
   cursor: default;
+}
+
+@media screen and (max-width: 1280px) {
+  .navbar-2 {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .navbar-links-wrapper {
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+  }
+  .navbar-menu {
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+  }
+  .navbar-link {
+    font-size: 14px;
+  }
+  .navbar-contact-button {
+    padding: 12px 20px;
+  }
 }
 
 @media (max-width: 991px) {
@@ -11860,8 +11897,8 @@ blockquote {
 .div-block-293 {
   border-bottom-right-radius: 10px;
   min-width: 60%;
-  min-height: 115%;
-  max-height: 115%;
+  min-height: 135%;
+  max-height: 135%;
   position: absolute;
   inset: auto 0 0% auto;
 }
@@ -15879,7 +15916,7 @@ blockquote {
     display: inline-flex;
   }
 
-  .investment-field, .specialist-field, .country-field, .town-field {
+  .country-field, .town-field {
     height: auto;
   }
 
@@ -17612,7 +17649,7 @@ blockquote {
 }
 
 #w-node-eb498b37-213a-c11b-ea02-d9e912224bad-7c2437c6 {
-  grid-area: 5 / 1 / 6 / 3;
+  grid-column: 1 / -1;
 }
 
 #w-node-_8e9cd0d7-cec0-8f23-dd59-1744d66dbfa5-3c701502 {
@@ -17810,14 +17847,6 @@ blockquote {
     grid-area: 4 / 1 / 5 / 2;
   }
 
-  #investment.w-node-_7ad54fa9-e0fc-9204-c5dc-ecb061168bf9-ffe6a484 {
-    grid-area: 5 / 1 / 6 / 2;
-  }
-
-  #specialist.w-node-_74c84ddf-5268-11e5-187a-95c70fa78586-ffe6a484 {
-    grid-area: 6 / 1 / 7 / 2;
-  }
-
   #country.w-node-_29c1f091-3d27-bd61-d92f-0f806d5c3ff5-ffe6a484 {
     grid-area: 5 / 1 / 6 / 2;
   }
@@ -17840,14 +17869,6 @@ blockquote {
 
   #message-subj-input.w-node-_9a178798-91ca-cff5-1a29-a2aa2b749beb-7c2437c6 {
     grid-area: 4 / 1 / 5 / 2;
-  }
-
-  #investment.w-node-_9a178798-91ca-cff5-1a29-a2aa2b749bf0-7c2437c6 {
-    grid-area: 5 / 1 / 6 / 2;
-  }
-
-  #specialist.w-node-_9a178798-91ca-cff5-1a29-a2aa2b749bf4-7c2437c6 {
-    grid-area: 6 / 1 / 7 / 2;
   }
 
   #country.w-node-_9a178798-91ca-cff5-1a29-a2aa2b749bf8-7c2437c6 {
