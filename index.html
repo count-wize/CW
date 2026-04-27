@@ -378,7 +378,7 @@
       "width": 940,
       "height": 529,
       "thumbnailUrl": "https://i.vimeocdn.com/video/1988072875-02860eabed00244f48d62b6e14984edda5689c5d809b1a58ec3d41c08d732971-d_1280?region=us",
-      "html": "<iframe src=\"https://player.vimeo.com/video/1061354345?title=0&byline=0&portrait=0&dnt=1&badge=0&controls=1&color=07B96A\" width=\"940\" height=\"529\" style=\"border: none; background-color: #000;\" allow=\"autoplay; fullscreen; picture-in-picture; encrypted-media\" allowfullscreen title=\"CountWize\"></iframe>",
+      "html": "<iframe src=\"https://player.vimeo.com/video/1061354345?title=0&byline=0&portrait=0&dnt=1&badge=0&controls=1&color=07B96A\" width=\"940\" height=\"529\" style=\"border: none; background-color: #000;\" allow=\"autoplay; fullscreen; picture-in-picture; encrypted-media\" title=\"CountWize\"></iframe>",
       "type": "video"
     }
   ],
@@ -479,8 +479,7 @@
               allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
               loading="eager"
               title="CountWize Educational Video"
-              aria-label="Video player showing crypto recovery educational content"
-              allowfullscreen>
+              aria-label="Video player showing crypto recovery educational content">
             </iframe>
           </div>
           <div class="lessons-section-wrapper">
@@ -1252,7 +1251,6 @@ document.addEventListener("DOMContentLoaded", function () {
       iframe.id = 'player';
       iframe.src = 'https://player.vimeo.com/video/' + videoId + '?' + params.toString();
       iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture; encrypted-media');
-      iframe.setAttribute('allowfullscreen', '');
       iframe.setAttribute('loading', 'eager');
       iframe.setAttribute('title', 'CountWize Educational Video');
       iframe.setAttribute('aria-label', 'Video player showing crypto recovery educational content');
@@ -1402,10 +1400,42 @@ document.addEventListener("DOMContentLoaded", function () {
   var iframe = document.getElementById('player');
   if (!iframe) return;
   var player = new Vimeo.Player(iframe);
+  var unmuted = false;
+
+  function tryUnmute() {
+    if (unmuted) return;
+    player.setVolume(1).then(function () {
+      return player.setMuted(false);
+    }).then(function () {
+      unmuted = true;
+      var btn = document.getElementById('vimeo-unmute-btn');
+      if (btn) btn.remove();
+    }).catch(function () {
+      showUnmuteBtn();
+    });
+  }
+
+  function showUnmuteBtn() {
+    if (document.getElementById('vimeo-unmute-btn')) return;
+    var container = iframe.parentElement;
+    var btn = document.createElement('button');
+    btn.id = 'vimeo-unmute-btn';
+    btn.textContent = '🔇 Tap to unmute';
+    btn.style.cssText = 'position:absolute;bottom:48px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#fff;border:1px solid rgba(255,255,255,0.4);border-radius:20px;padding:6px 16px;font-size:13px;cursor:pointer;z-index:10;';
+    container.style.position = 'relative';
+    container.appendChild(btn);
+    btn.addEventListener('click', function () {
+      player.setMuted(false).then(function () {
+        unmuted = true;
+        btn.remove();
+      });
+    });
+  }
+
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        player.play();
+        player.play().then(tryUnmute);
       } else {
         player.pause();
       }
