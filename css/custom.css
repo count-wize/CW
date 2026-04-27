@@ -197,3 +197,155 @@ img {
   font-family: 'Be Vietnam Pro', sans-serif;
 }
 .tos-related-link:hover { border-color: #07B96A; color: #07B96A; }
+
+/* ==========================================================================
+   COOKIEBOT DIALOG — COUNTWIZE BRAND OVERRIDE
+   ========================================================================== */
+
+#CybotCookiebotDialog {
+  background: #0d0d12 !important;
+  border: 1px solid rgba(7, 185, 106, 0.22) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.7) !important;
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+  color: #fcfcfc !important;
+}
+
+/* Wrapper and inner panels */
+#CybotCookiebotDialogHeader,
+.CybotCookiebotDialogContentWrapper,
+#CybotCookiebotDialogTabContent,
+#CybotCookiebotDialogBody,
+#CybotCookiebotDialogDetailBody {
+  background: transparent !important;
+}
+
+#CybotCookiebotDialogHeader {
+  border-bottom: 1px solid rgba(7, 185, 106, 0.12) !important;
+}
+
+/* Navigation tabs */
+#CybotCookiebotDialogNav {
+  background: transparent !important;
+}
+
+.CybotCookiebotDialogNavItemLink {
+  color: #b4b8c2 !important;
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+  font-weight: 500 !important;
+  border-bottom: 2px solid transparent !important;
+}
+
+.CybotCookiebotDialogNavItemLink.CybotCookiebotDialogActive {
+  color: #07B96A !important;
+  border-bottom-color: #07B96A !important;
+}
+
+.CybotCookiebotDialogNavItemLink:hover {
+  color: #07B96A !important;
+}
+
+/* Heading and body text */
+#CybotCookiebotDialogBodyContentTitle {
+  color: #fcfcfc !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+#CybotCookiebotDialogBodyContentText,
+#CybotCookiebotDialogBodyContentText p,
+.CybotCookiebotDialogDetailBodyContentCookieTypeIntro,
+.CybotCookiebotDialogDetailBodyContentCookieInfoDescription {
+  color: #b4b8c2 !important;
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+}
+
+/* "Show details" link */
+#CybotCookiebotDialogBodyEdgeMoreDetailsLink {
+  color: #07B96A !important;
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+}
+
+#CybotCookiebotDialogBodyEdgeMoreDetailsLink:hover {
+  color: #08d478 !important;
+}
+
+/* "Allow all" / Accept button */
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll,
+#CybotCookiebotDialogBodyButtonAccept,
+a#CybotCookiebotDialogBodyButtonAccept {
+  background: #07B96A !important;
+  border: 2px solid #07B96A !important;
+  color: #090910 !important;
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+}
+
+#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll:hover,
+#CybotCookiebotDialogBodyButtonAccept:hover {
+  background: #08d478 !important;
+  border-color: #08d478 !important;
+}
+
+/* "Deny" / Decline button */
+#CybotCookiebotDialogBodyButtonDecline,
+a#CybotCookiebotDialogBodyButtonDecline {
+  background: transparent !important;
+  border: 2px solid rgba(7, 185, 106, 0.35) !important;
+  color: #b4b8c2 !important;
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+}
+
+#CybotCookiebotDialogBodyButtonDecline:hover {
+  border-color: #07B96A !important;
+  color: #fcfcfc !important;
+}
+
+/* Category toggle sliders */
+.CybotCookiebotDialogBodyLevelButtonSlider {
+  background-color: #272731 !important;
+}
+
+.CybotCookiebotDialogBodyLevelButton:checked + .CybotCookiebotDialogBodyLevelButtonSlider {
+  background-color: #07B96A !important;
+}
+
+/* Category header buttons */
+.CybotCookiebotDialogDetailBodyContentCookieContainerButton {
+  color: #fcfcfc !important;
+  font-family: 'Be Vietnam Pro', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.CybotCookiebotDialogDetailBulkConsentCount {
+  background: rgba(7, 185, 106, 0.15) !important;
+  color: #07B96A !important;
+  border-radius: 999px !important;
+}
+
+/* Cookie provider links */
+.CybotCookiebotDialogDetailBodyContentCookieProvider {
+  color: #07B96A !important;
+}
+
+/* Scrollbar track (webkit) */
+#CybotCookiebotDialog ::-webkit-scrollbar {
+  width: 4px;
+}
+
+#CybotCookiebotDialog ::-webkit-scrollbar-track {
+  background: #121218;
+}
+
+#CybotCookiebotDialog ::-webkit-scrollbar-thumb {
+  background: rgba(7, 185, 106, 0.35);
+  border-radius: 4px;
+}
+
+/* Fader gradients — match dialog background */
+.CybotCookiebotFader {
+  display: none !important;
+}
