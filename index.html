@@ -1393,49 +1393,22 @@ document.addEventListener("DOMContentLoaded", function () {
   var iframe = document.getElementById('player');
   if (!iframe) return;
   var player = new Vimeo.Player(iframe);
-  var unmuted = false;
-
-  function tryUnmute() {
-    if (unmuted) return;
-    player.setVolume(1).then(function () {
-      return player.setMuted(false);
-    }).then(function () {
-      unmuted = true;
-      var btn = document.getElementById('vimeo-unmute-btn');
-      if (btn) btn.remove();
-    }).catch(function () {
-      showUnmuteBtn();
-    });
-  }
-
-  function showUnmuteBtn() {
-    if (document.getElementById('vimeo-unmute-btn')) return;
-    var container = iframe.parentElement;
-    var btn = document.createElement('button');
-    btn.id = 'vimeo-unmute-btn';
-    btn.textContent = '🔇 Tap to unmute';
-    btn.style.cssText = 'position:absolute;bottom:48px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#fff;border:1px solid rgba(255,255,255,0.4);border-radius:20px;padding:6px 16px;font-size:13px;cursor:pointer;z-index:10;';
-    container.style.position = 'relative';
-    container.appendChild(btn);
-    btn.addEventListener('click', function () {
-      player.setMuted(false).then(function () {
-        unmuted = true;
-        btn.remove();
-      });
-    });
-  }
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        player.setMuted(true).then(function () { return player.play(); }).then(tryUnmute);
+        player.setMuted(true).then(function () { return player.play(); }).catch(function () {});
       } else {
-        player.pause();
+        player.pause().catch(function () {});
       }
     });
   }, { threshold: 0.5 });
 
-  player.ready().then(function () { observer.observe(iframe); });
+  player.ready().then(function () {
+    observer.observe(iframe);
+  }).catch(function () {
+    observer.observe(iframe);
+  });
 })();
 </script>
 </body>
