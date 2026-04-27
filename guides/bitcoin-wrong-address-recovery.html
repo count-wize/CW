@@ -176,14 +176,10 @@
 
   <style>
 /* FCA sticky bar */
-#fca-notice{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;border-top:2px solid #07B96A;overflow:hidden;max-height:300px;transition:transform 0.4s ease,opacity 0.35s ease;}
+#fca-notice{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;overflow:hidden;max-height:300px;transition:transform 0.4s ease,opacity 0.35s ease;}#chat-widget-container{bottom:40px!important;}
 #fca-notice.fca-closing{transform:translateY(100%);opacity:0;}
 .fca-bar{color:#e8e8f0;font-size:12px;line-height:1.4;text-align:center;padding:8px 48px 8px 16px;}
-.fca-disclaimer-block{color:#c8c8d8;font-size:13px;line-height:1.6;border-top:1px solid #07B96A;padding:14px 48px 14px 20px;max-width:900px;margin:0 auto;}
-.fca-disclaimer-block p{margin:0 0 6px;}
-.fca-disclaimer-block p:last-child{margin-bottom:0;}
-.fca-disclaimer-block a{color:#07B96A;text-decoration:underline;}
-.fca-notice-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#e8e8f0;font-size:26px;line-height:1;cursor:pointer;padding:4px 8px;opacity:.6;}
+.fca-notice-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:#bbeec4;border:none;color:#0f2a1d;font-size:20px;line-height:1;cursor:pointer;padding:2px 10px;border-radius:4px;opacity:1;font-weight:700;}
 .fca-notice-close:hover{opacity:1;}
 /* Safety box */
 .safety-box{background:#0d0d12;border-left:4px solid #07B96A;border-radius:6px;padding:20px 24px;margin:32px auto;max-width:780px;font-size:13px;line-height:1.7;color:#c8c8d8;}
@@ -309,19 +305,16 @@
   <!-- STICKY BOTTOM DISCLAIMER BAR -->
   <div id="fca-notice" role="note" aria-label="Regulatory notice">
     <div class="fca-bar">CountWize Ltd (<a href="https://find-and-update.company-information.service.gov.uk/company/16198508" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Co. 16198508</a>) is not FCA-authorised. Educational content and on-chain tracing services only. No guarantee of recovery.</div>
-    <div class="fca-disclaimer-block">
-      <p><strong>CountWize Ltd is not FCA-authorised.</strong> This website provides educational content and on-chain tracing services only. We do not provide financial advice, legal advice, or a guarantee of asset recovery. Recovery outcomes depend on the specific circumstances of each case.</p>
-      <p>If you have been a victim of fraud, report to <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer">actionfraud.police.uk</a>. Check the regulatory status of any firm at <a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener noreferrer">fca.org.uk/scamsmart</a>.</p>
-    </div>
     <button class="fca-notice-close" id="fca-notice-close" aria-label="Dismiss notice">&times;</button>
   </div>
   <script>
   (function(){
     var n=document.getElementById('fca-notice');
     if(localStorage.getItem('fca-closed')){n.style.display='none';}
+    else{function sp(){var h=n.offsetHeight+'px';document.body.style.paddingBottom=h;var lc=document.getElementById('chat-widget-container');if(lc)lc.style.bottom=h;}sp();window.addEventListener('resize',sp);var ob=new MutationObserver(function(){var lc=document.getElementById('chat-widget-container');if(lc){lc.style.bottom=n.offsetHeight+'px';ob.disconnect();}});ob.observe(document.body,{childList:true,subtree:true});}
     document.getElementById('fca-notice-close').addEventListener('click',function(){
       n.classList.add('fca-closing');
-      setTimeout(function(){n.style.display='none';},420);
+      setTimeout(function(){n.style.display='none';document.body.style.paddingBottom='0';var lc=document.getElementById('chat-widget-container');if(lc)lc.style.bottom='0';},420);
       localStorage.setItem('fca-closed','1');
     });
   })();

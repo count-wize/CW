@@ -27,4 +27,13 @@
       initPixel();
     }
   });
+
+  // On decline: delete the consent cookie so banner re-appears next session
+  window.addEventListener('CookiebotOnDecline', function() {
+    var host = window.location.hostname;
+    var domain = host.indexOf('www.') === 0 ? host.slice(4) : host;
+    document.cookie = 'CookieConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'CookieConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + domain + ';';
+    document.cookie = 'CookieConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + domain + ';';
+  });
 })();
