@@ -82,7 +82,9 @@
         https://player.vimeo.com
         https://vimeo.com
         https://www.googletagmanager.com
-        https://consent.cookiebot.com;
+        https://consent.cookiebot.com
+        https://consentcdn.cookiebot.com
+        https://secure.livechatinc.com;
       connect-src 'self'
         https://www.google-analytics.com
         https://analytics.google.com
