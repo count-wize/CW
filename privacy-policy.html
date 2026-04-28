@@ -47,7 +47,7 @@
 ::-webkit-scrollbar-thumb { background: #A3DCAD; border-radius: 5px; border: solid 1px #A3DCAD; }
 #fca-notice{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;overflow:hidden;max-height:300px;transition:transform 0.4s ease,opacity 0.35s ease;}#chat-widget-container{bottom:40px!important;}
 #fca-notice.fca-closing{transform:translateY(100%);opacity:0;}
-.fca-bar{color:#e8e8f0;font-size:12px;line-height:1.4;text-align:center;padding:8px 48px 8px 16px;}
+.fca-bar{color:#e8e8f0;font-size:12px;line-height:1.5;text-align:center;padding:8px 48px 8px 48px;}
 .fca-notice-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:#bbeec4;border:none;color:#0f2a1d;font-size:20px;line-height:1;cursor:pointer;padding:2px 10px;border-radius:4px;opacity:1;font-weight:700;}
 .fca-notice-close:hover{opacity:1;}
 </style>
@@ -98,7 +98,7 @@
 </head>
 <body class="body-4">
   <div id="fca-notice" role="note" aria-label="Regulatory notice">
-    <div class="fca-bar">CountWize Ltd (<a href="https://find-and-update.company-information.service.gov.uk/company/16198508" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Co. 16198508</a>) is not FCA-authorised. Educational content and on-chain tracing services only. No guarantee of recovery.</div>
+    <div class="fca-bar">CountWize Ltd (<a href="https://find-and-update.company-information.service.gov.uk/company/16198508" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">UK Co. 16198508</a>) is a UK-registered firm providing educational on-chain forensic-tracing services only.<br>We are not authorised by the UK FCA. We are not registered with FINTRAC, IIROC, MFDA, or any Canadian provincial financial regulator. We do not provide financial, legal, or investment advice and we make no guarantee of asset recovery.</div>
     <button class="fca-notice-close" id="fca-notice-close" aria-label="Dismiss notice">&times;</button>
   </div>
   <script>
@@ -398,10 +398,30 @@
             </div>
           </div>
 
-          <!-- Section 12: Complaints -->
+          <!-- Section 12: Canadian Residents (PIPEDA) -->
           <div class="tos-block">
             <div class="tos-block-header">
               <div class="tos-block-num">12</div>
+              <h2 class="tos-block-title">Data Processing for Canadian Residents</h2>
+            </div>
+            <div class="tos-block-body">
+              <p>If you are a resident of Canada, your personal information is also protected under Canada's <strong>Personal Information Protection and Electronic Documents Act (PIPEDA)</strong> and applicable provincial privacy laws (including, where relevant, Ontario's <em>Freedom of Information and Protection of Privacy Act</em> and Quebec's <em>Act respecting the protection of personal information in the private sector</em> as amended by Law 25).</p>
+
+              <h3>Cross-border transfers</h3>
+              <p>CountWize Ltd is established in the United Kingdom. When you submit personal information to us, it may be transferred to, stored in, and processed in the United Kingdom and other jurisdictions where our service providers operate (including the United States, in the case of Google and Netlify). By submitting your information, you acknowledge this cross-border transfer. We rely on contractual safeguards with our processors to maintain protection comparable to PIPEDA.</p>
+
+              <h3>Your rights under PIPEDA</h3>
+              <p>You have the right to: (a) access the personal information we hold about you; (b) request correction of inaccurate information; (c) withdraw consent for further processing (subject to contractual or legal restrictions); (d) lodge a complaint with the Office of the Privacy Commissioner of Canada (<a href="https://www.priv.gc.ca" target="_blank" rel="noopener noreferrer">priv.gc.ca</a>) or your provincial Privacy Commissioner.</p>
+
+              <h3>Regulatory status in Canada</h3>
+              <p>CountWize Ltd is <strong>not</strong> registered with FINTRAC, IIROC, MFDA, or any Canadian provincial financial regulator. We provide educational forensic on-chain tracing services only. We do not provide financial, legal, or investment advice. We do not solicit clients to engage in regulated financial activity. We make no representation or guarantee that any digital asset can be recovered.</p>
+            </div>
+          </div>
+
+          <!-- Section 13: Complaints -->
+          <div class="tos-block">
+            <div class="tos-block-header">
+              <div class="tos-block-num">13</div>
               <h2 class="tos-block-title">How to Complain</h2>
             </div>
             <div class="tos-block-body">
